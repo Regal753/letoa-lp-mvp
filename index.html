@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>長岡京市の設備トラブル解決 | レトア</title>
+  <meta name="description" content="長岡京市・近隣エリアの設備トラブル対応。給湯器・ガスコンロ・配管の不具合を明朗会計で解決します。">
+
+  <meta property="og:title" content="長岡京市の設備トラブル解決 | レトア">
+  <meta property="og:description" content="地元密着でスピード対応。見積り後の追加請求なし。">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            heading: ['"Zen Kaku Gothic New"', '"Noto Sans JP"', 'sans-serif']
+          },
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e'
+            },
+            secondary: {
+              100: '#e0f2f1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e'
+            },
+            accent: {
+              500: '#f97316',
+              600: '#ea580c'
+            }
+          },
+          boxShadow: {
+            card: '0 10px 30px rgba(2, 132, 199, 0.08)'
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="./assets/main.css">
+</head>
+<body class="bg-white text-slate-800 pt-20 pb-20 md:pb-0">
+  <header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm shadow-sm border-b border-slate-200 z-50">
+    <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
+      <a href="#" class="flex flex-col">
+        <span class="text-[10px] md:text-xs text-slate-500 font-medium tracking-wider">長岡京市の設備トラブル解決</span>
+        <span class="text-xl md:text-2xl font-heading font-bold text-primary-800 tracking-tight">レトア</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700">
+        <a href="#about" class="hover:text-primary-600 transition">レトアについて</a>
+        <a href="#reasons" class="hover:text-primary-600 transition">選ばれる理由</a>
+        <a href="#services" class="hover:text-primary-600 transition">対応サービス</a>
+        <a href="#flow" class="hover:text-primary-600 transition">ご依頼の流れ</a>
+        <a href="#contact" class="hover:text-primary-600 transition">お問い合わせ</a>
+        <a href="#company" class="hover:text-primary-600 transition">会社概要</a>
+      </nav>
+
+      <div class="hidden md:flex items-center gap-4">
+        <div class="text-right">
+          <p class="text-xs text-slate-500 mb-0.5"><span data-business-hours>8:00-20:00（年中無休）</span></p>
+          <a data-email-anchor href="mailto:retoa@regalocom.net" class="text-base font-bold text-primary-800 flex items-center justify-end gap-1 hover:text-primary-600 transition">
+            <i class="fa-solid fa-envelope"></i> <span data-contact-email>retoa@regalocom.net</span>
+          </a>
+        </div>
+        <a href="#contact" class="bg-secondary-600 hover:bg-secondary-700 text-white px-5 py-2.5 rounded shadow-sm transition font-bold text-sm">
+          無料相談・見積り
+        </a>
+      </div>
+
+      <button id="mobile-menu-btn" class="md:hidden text-2xl text-slate-700 p-2" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
+      <nav class="flex flex-col text-base font-medium text-slate-700 p-4 space-y-4">
+        <a href="#about" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>レトアについて</a>
+        <a href="#reasons" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>選ばれる理由</a>
+        <a href="#services" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>対応サービス</a>
+        <a href="#flow" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>ご依頼の流れ</a>
+        <a href="#faq" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>よくあるご質問</a>
+        <a href="#contact" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>お問い合わせ</a>
+        <a href="#company" class="block"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>会社概要</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="relative bg-slate-100 pt-16 pb-20 md:pt-32 md:pb-32 overflow-hidden border-b border-slate-200">
+    <div class="hero-grid absolute inset-0 opacity-25"></div>
+    <div class="hero-grad absolute -right-20 top-10 w-72 h-72 rounded-full blur-3xl"></div>
+
+    <div class="max-w-6xl mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center gap-10">
+      <div class="w-full md:w-3/5 animate-fade-up">
+        <div class="flex gap-2 mb-6">
+          <span class="bg-primary-600 text-white text-xs md:text-sm font-bold px-3 py-1 rounded-sm">長岡京市密着</span>
+          <span class="bg-secondary-600 text-white text-xs md:text-sm font-bold px-3 py-1 rounded-sm">お見積り無料</span>
+        </div>
+        <h1 class="text-2xl md:text-4xl lg:text-5xl font-heading font-bold text-slate-800 leading-snug md:leading-tight mb-6">
+          朝起きたら<span class="text-primary-700 border-b-4 border-accent-500 pb-1">お湯が出ない...</span><br>
+          そのトラブル、地元のレトアが<br class="hidden md:block">誠実に解決します。
+        </h1>
+        <p class="text-base md:text-lg text-slate-600 mb-8 leading-relaxed font-medium">
+          長岡京市・近隣エリア密着。見積り後の追加請求は行わず、わかりやすい説明と適正価格で対応します。
+        </p>
+        <div class="hidden md:flex gap-3">
+          <a href="#contact" class="inline-flex items-center justify-center bg-secondary-600 hover:bg-secondary-700 text-white text-base font-bold px-6 py-4 rounded-md shadow-md transition">
+            <i class="fa-solid fa-pen-to-square mr-2"></i>フォームで無料相談
+          </a>
+          <a data-contact-form-url target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSdbqMVhTDUHcfhnrv5Vj96aBF9WhyAwysTfmG9CdgElhrGm1A/viewform" class="inline-flex items-center justify-center bg-white border border-primary-300 text-primary-700 hover:bg-primary-50 text-base font-bold px-6 py-4 rounded-md transition">
+            <i class="fa-solid fa-up-right-from-square mr-2"></i>Googleフォームを開く
+          </a>
+        </div>
+      </div>
+
+      <div class="w-full md:w-2/5 animate-fade-up delay-100">
+        <div class="aspect-[4/3] bg-slate-200 rounded-xl shadow-inner border border-slate-300 flex items-center justify-center overflow-hidden">
+          <div class="text-center text-slate-400 p-4">
+            <i class="fa-solid fa-screwdriver-wrench text-5xl mb-2"></i>
+            <p class="text-sm">ここにスタッフ・施工風景写真を配置</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 -mt-8 relative z-20 mb-16 hidden md:block">
+    <div class="bg-white rounded-lg shadow-sm border border-slate-200 p-6 flex items-center gap-6">
+      <h2 class="text-base font-bold text-primary-800 whitespace-nowrap border-r border-slate-300 pr-6">お知らせ</h2>
+      <ul class="w-full">
+        <li class="flex items-center gap-4 text-sm text-slate-700">
+          <span class="text-slate-500 font-medium">2026.02.23</span>
+          <span class="bg-primary-50 text-primary-700 border border-primary-100 px-2 py-0.5 rounded text-xs font-bold">ご案内</span>
+          <a href="#" class="hover:text-primary-600 transition truncate">設備トラブル対応サービス「レトア」の新規LPを公開しました。</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="about" class="py-16 md:py-20 bg-white scroll-mt-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-12 shadow-sm">
+        <div class="text-center mb-8">
+          <h2 class="text-xl md:text-2xl font-heading font-bold text-slate-800 flex items-center justify-center gap-3">
+            <i class="fa-solid fa-circle-exclamation text-slate-400 text-3xl"></i>
+            こんな不安、ありませんか？
+          </h2>
+        </div>
+        <ul class="space-y-4 mb-10 max-w-2xl mx-auto">
+          <li class="flex items-start bg-white p-5 rounded-lg border border-slate-200 shadow-sm">
+            <i class="fa-solid fa-square-check text-primary-600 mt-1 mr-4 text-xl"></i>
+            <span class="text-slate-700 text-base md:text-lg font-medium leading-relaxed">作業後に高額な追加請求をされるのが怖い</span>
+          </li>
+          <li class="flex items-start bg-white p-5 rounded-lg border border-slate-200 shadow-sm">
+            <i class="fa-solid fa-square-check text-primary-600 mt-1 mr-4 text-xl"></i>
+            <span class="text-slate-700 text-base md:text-lg font-medium leading-relaxed">給湯器が壊れて、何日もお湯が使えない</span>
+          </li>
+          <li class="flex items-start bg-white p-5 rounded-lg border border-slate-200 shadow-sm">
+            <i class="fa-solid fa-square-check text-primary-600 mt-1 mr-4 text-xl"></i>
+            <span class="text-slate-700 text-base md:text-lg font-medium leading-relaxed">大手は安心だが費用が高いと感じる</span>
+          </li>
+        </ul>
+        <div class="text-center">
+          <div class="inline-flex items-center justify-center bg-primary-50 border border-primary-200 text-primary-800 text-lg md:text-xl font-bold py-4 px-8 rounded-full">
+            <i class="fa-solid fa-arrow-down mr-3"></i>
+            レトアなら、その不安を解消します。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reasons" class="py-16 md:py-24 bg-slate-50 border-t border-slate-200 scroll-mt-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="text-primary-600 font-bold tracking-widest text-sm uppercase">Reasons</span>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-slate-800 mt-2">レトアが選ばれる3つの理由</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <article class="bg-white p-8 rounded-xl shadow-card border border-slate-200 relative pt-12">
+          <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-2xl border-4 border-slate-50 shadow-sm">
+            <i class="fa-solid fa-toolbox"></i>
+          </div>
+          <h3 class="text-lg md:text-xl font-bold text-primary-900 mb-4 text-center border-b border-slate-100 pb-4">代替機による応急処置</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">交換に日数がかかる場合でも、代替機で当日からお湯を使える状態に近づけます。（状況・在庫による）</p>
+        </article>
+
+        <article class="bg-white p-8 rounded-xl shadow-card border border-slate-200 relative pt-12">
+          <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-2xl border-4 border-slate-50 shadow-sm">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+          </div>
+          <h3 class="text-lg md:text-xl font-bold text-primary-900 mb-4 text-center border-b border-slate-100 pb-4">追加請求なしの明朗会計</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">現場確認後に総額を提示し、ご納得後に作業開始。事後の請求増額は行いません。</p>
+        </article>
+
+        <article class="bg-white p-8 rounded-xl shadow-card border border-slate-200 relative pt-12">
+          <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-2xl border-4 border-slate-50 shadow-sm">
+            <i class="fa-solid fa-handshake"></i>
+          </div>
+          <h3 class="text-lg md:text-xl font-bold text-primary-900 mb-4 text-center border-b border-slate-100 pb-4">長岡京市密着の迅速対応</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">地元密着だからこそ、無駄な出張費や中間マージンを抑えた対応が可能です。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-16 md:py-24 bg-white scroll-mt-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-primary-600 font-bold tracking-widest text-sm uppercase">Services</span>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-slate-800 mt-2">主な対応サービス</h2>
+      </div>
+
+      <p class="text-slate-700 mb-10 leading-relaxed text-center max-w-2xl mx-auto">
+        症状により必要部品や作業は異なるため、まずは無料でお見積りします。無理な営業は行いません。
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition group">
+          <div class="h-40 bg-slate-100 flex items-center justify-center text-slate-300 group-hover:bg-primary-50 transition">
+            <i class="fa-solid fa-shower text-6xl group-hover:text-primary-300 transition"></i>
+          </div>
+          <div class="p-6 text-center border-t border-slate-200">
+            <h3 class="font-bold text-lg text-slate-800">給湯器のトラブル・交換</h3>
+            <p class="text-sm text-slate-500 mt-2">お湯が出ない、異音、年式劣化</p>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition group">
+          <div class="h-40 bg-slate-100 flex items-center justify-center text-slate-300 group-hover:bg-primary-50 transition">
+            <i class="fa-solid fa-fire text-6xl group-hover:text-primary-300 transition"></i>
+          </div>
+          <div class="p-6 text-center border-t border-slate-200">
+            <h3 class="font-bold text-lg text-slate-800">ガスコンロのトラブル・交換</h3>
+            <p class="text-sm text-slate-500 mt-2">点火不良、火力不安定、故障対応</p>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition group">
+          <div class="h-40 bg-slate-100 flex items-center justify-center text-slate-300 group-hover:bg-primary-50 transition">
+            <i class="fa-solid fa-droplet text-6xl group-hover:text-primary-300 transition"></i>
+          </div>
+          <div class="p-6 text-center border-t border-slate-200">
+            <h3 class="font-bold text-lg text-slate-800">水漏れ・配管トラブル</h3>
+            <p class="text-sm text-slate-500 mt-2">キッチン・洗面・屋外配管の不具合</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow" class="py-16 md:py-24 bg-slate-50 border-t border-slate-200 scroll-mt-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-primary-600 font-bold tracking-widest text-sm uppercase">Flow</span>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-slate-800 mt-2">ご依頼の流れ</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+        <div class="hidden md:block absolute top-[40px] left-10 right-10 h-0.5 bg-slate-300 z-0"></div>
+
+        <article class="relative z-10 text-center">
+          <div class="w-20 h-20 bg-white text-primary-600 rounded-full flex flex-col items-center justify-center mx-auto mb-4 border-4 border-slate-200 shadow-sm font-bold">
+            <span class="text-xs">STEP</span>
+            <span class="text-2xl leading-none">1</span>
+          </div>
+          <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm h-full">
+            <h3 class="font-bold text-slate-800 mb-2">お問い合わせ</h3>
+            <p class="text-xs text-slate-500">フォーム入力またはGoogleフォーム</p>
+          </div>
+        </article>
+
+        <article class="relative z-10 text-center mt-4 md:mt-0">
+          <div class="w-20 h-20 bg-white text-primary-600 rounded-full flex flex-col items-center justify-center mx-auto mb-4 border-4 border-slate-200 shadow-sm font-bold">
+            <span class="text-xs">STEP</span>
+            <span class="text-2xl leading-none">2</span>
+          </div>
+          <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm h-full">
+            <h3 class="font-bold text-slate-800 mb-2">現場確認・見積り</h3>
+            <p class="text-xs text-slate-500">ここまでは無料です</p>
+          </div>
+        </article>
+
+        <article class="relative z-10 text-center mt-4 md:mt-0">
+          <div class="w-20 h-20 bg-white text-primary-600 rounded-full flex flex-col items-center justify-center mx-auto mb-4 border-4 border-slate-200 shadow-sm font-bold">
+            <span class="text-xs">STEP</span>
+            <span class="text-2xl leading-none">3</span>
+          </div>
+          <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm h-full">
+            <h3 class="font-bold text-slate-800 mb-2">ご納得後に作業開始</h3>
+          </div>
+        </article>
+
+        <article class="relative z-10 text-center mt-4 md:mt-0">
+          <div class="w-20 h-20 bg-primary-600 text-white rounded-full flex flex-col items-center justify-center mx-auto mb-4 border-4 border-primary-200 shadow-sm font-bold">
+            <span class="text-xs">STEP</span>
+            <span class="text-2xl leading-none">4</span>
+          </div>
+          <div class="bg-white p-5 rounded-lg border border-primary-200 shadow-sm h-full">
+            <h3 class="font-bold text-slate-800 mb-2">作業完了・お支払い</h3>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="py-16 md:py-24 bg-white scroll-mt-20">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-primary-600 font-bold tracking-widest text-sm uppercase">FAQ</span>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-slate-800 mt-2">よくあるご質問</h2>
+      </div>
+
+      <div class="space-y-4">
+        <details class="group bg-slate-50 rounded-lg border border-slate-200" open>
+          <summary class="faq-summary flex justify-between items-center font-bold cursor-pointer list-none p-5 text-slate-800 select-none">
+            <span class="flex items-center"><span class="text-primary-600 mr-4 text-xl">Q.</span> 見積りだけでも本当に無料ですか？</span>
+            <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400"><i class="fa-solid fa-chevron-down"></i></span>
+          </summary>
+          <div class="p-5 pt-0 text-slate-700 border-t border-slate-200 mt-2 leading-relaxed flex items-start bg-white rounded-b-lg">
+            <span class="text-secondary-600 font-bold mr-4 text-xl mt-4">A.</span>
+            <p class="mt-5 text-sm md:text-base">はい。見積りは無料です。ご予算と合わない場合はその場でお断りいただけます。</p>
+          </div>
+        </details>
+
+        <details class="group bg-slate-50 rounded-lg border border-slate-200">
+          <summary class="faq-summary flex justify-between items-center font-bold cursor-pointer list-none p-5 text-slate-800 select-none">
+            <span class="flex items-center"><span class="text-primary-600 mr-4 text-xl">Q.</span> 夜間や休日も対応できますか？</span>
+            <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400"><i class="fa-solid fa-chevron-down"></i></span>
+          </summary>
+          <div class="p-5 pt-0 text-slate-700 border-t border-slate-200 mt-2 leading-relaxed flex items-start bg-white rounded-b-lg">
+            <span class="text-secondary-600 font-bold mr-4 text-xl mt-4">A.</span>
+            <p class="mt-5 text-sm md:text-base">営業時間外の緊急対応は内容により調整可能です。まずはお問い合わせください。</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-16 md:py-24 bg-slate-50 border-t border-slate-200 scroll-mt-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-primary-600 font-bold tracking-widest text-sm uppercase">Contact</span>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-slate-800 mt-2">無料相談・お問い合わせ</h2>
+        <p class="text-sm md:text-base text-slate-600 mt-4">
+          メール: <a data-email-anchor href="mailto:retoa@regalocom.net" class="font-bold text-primary-700 underline-offset-4 hover:underline"><span data-contact-email>retoa@regalocom.net</span></a>
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl border border-slate-200 shadow-card p-6 md:p-8 space-y-6">
+        <a data-contact-form-url target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSdbqMVhTDUHcfhnrv5Vj96aBF9WhyAwysTfmG9CdgElhrGm1A/viewform" class="inline-flex items-center justify-center bg-primary-600 hover:bg-primary-700 text-white font-bold px-6 py-3 rounded-md transition">
+          <i class="fa-solid fa-up-right-from-square mr-2"></i>Googleフォームで送信する
+        </a>
+
+        <form id="contact-form" class="space-y-6" novalidate>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="block text-sm font-bold text-slate-700 mb-2">お名前 <span class="text-accent-600">必須</span></label>
+              <input id="name" name="name" type="text" required autocomplete="name" class="w-full rounded-md border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-400">
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-bold text-slate-700 mb-2">電話番号 <span class="text-accent-600">必須</span></label>
+              <input id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="例）09012345678" class="w-full rounded-md border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-400">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <label for="email" class="block text-sm font-bold text-slate-700 mb-2">メールアドレス <span class="text-accent-600">必須</span></label>
+              <input id="email" name="email" type="email" required autocomplete="email" placeholder="例）sample@example.com" class="w-full rounded-md border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-400">
+            </div>
+            <div>
+              <label for="category" class="block text-sm font-bold text-slate-700 mb-2">お問い合わせ種別</label>
+              <select id="category" name="category" class="w-full rounded-md border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-400">
+                <option value="給湯器">給湯器</option>
+                <option value="ガスコンロ">ガスコンロ</option>
+                <option value="配管・水漏れ">配管・水漏れ</option>
+                <option value="その他">その他</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-bold text-slate-700 mb-2">ご相談内容 <span class="text-accent-600">必須</span></label>
+            <textarea id="message" name="message" rows="6" required placeholder="症状、設置場所、希望日時などをご記入ください。" class="w-full rounded-md border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-400"></textarea>
+          </div>
+
+          <div class="rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
+            <p>送信内容はお問い合わせ対応の目的でのみ利用します。</p>
+            <label class="mt-3 inline-flex items-start gap-2 cursor-pointer">
+              <input id="consent" type="checkbox" required class="mt-1 accent-primary-700">
+              <span>個人情報の取扱いに同意して送信する <span class="text-accent-600">必須</span></span>
+            </label>
+          </div>
+
+          <input name="company" id="company" type="text" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+          <input type="hidden" name="source" value="letoa-lp-mvp">
+
+          <button id="submit-btn" type="submit" class="w-full md:w-auto inline-flex items-center justify-center bg-secondary-600 hover:bg-secondary-700 text-white font-bold text-base px-8 py-3 rounded-md transition disabled:opacity-60 disabled:cursor-not-allowed">
+            <i class="fa-solid fa-paper-plane mr-2"></i>この内容で送信する
+          </button>
+
+          <p id="contact-status" class="text-sm font-medium min-h-6" role="status" aria-live="polite"></p>
+          <p class="text-xs text-slate-500">入力後はメール作成画面を開きます。開けない場合は上のGoogleフォームをご利用ください。</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="company" class="py-16 md:py-24 bg-white border-t border-slate-200 scroll-mt-20">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <span class="text-primary-600 font-bold tracking-widest text-sm uppercase">Company</span>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-slate-800 mt-2">会社概要</h2>
+      </div>
+
+      <div class="bg-white shadow-sm border border-slate-200 rounded-lg overflow-hidden">
+        <table class="w-full text-left border-collapse">
+          <tbody>
+            <tr class="border-b border-slate-200">
+              <th class="py-4 px-6 bg-slate-100 w-1/3 font-bold text-slate-700 border-r border-slate-200 text-sm md:text-base">屋号</th>
+              <td class="py-4 px-6 text-slate-800 text-sm md:text-base font-medium">レトア</td>
+            </tr>
+            <tr class="border-b border-slate-200">
+              <th class="py-4 px-6 bg-slate-100 font-bold text-slate-700 border-r border-slate-200 text-sm md:text-base">対応エリア</th>
+              <td class="py-4 px-6 text-slate-800 text-sm md:text-base">長岡京市および近隣エリア</td>
+            </tr>
+            <tr class="border-b border-slate-200">
+              <th class="py-4 px-6 bg-slate-100 font-bold text-slate-700 border-r border-slate-200 text-sm md:text-base">営業時間</th>
+              <td class="py-4 px-6 text-slate-800 text-sm md:text-base"><span data-business-hours>8:00-20:00（年中無休）</span></td>
+            </tr>
+            <tr class="border-b border-slate-200">
+              <th class="py-4 px-6 bg-slate-100 font-bold text-slate-700 border-r border-slate-200 text-sm md:text-base">お問い合わせメール</th>
+              <td class="py-4 px-6 text-slate-800 text-sm md:text-base">
+                <a data-email-anchor href="mailto:retoa@regalocom.net" class="font-bold text-primary-700"><span data-contact-email>retoa@regalocom.net</span></a>
+              </td>
+            </tr>
+            <tr>
+              <th class="py-4 px-6 bg-slate-100 font-bold text-slate-700 border-r border-slate-200 text-sm md:text-base">フォーム</th>
+              <td class="py-4 px-6 text-slate-800 text-sm md:text-base">
+                <a data-contact-form-url target="_blank" rel="noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSdbqMVhTDUHcfhnrv5Vj96aBF9WhyAwysTfmG9CdgElhrGm1A/viewform" class="font-bold text-primary-700 underline-offset-4 hover:underline">Googleフォーム</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-slate-800 text-slate-300 py-10 border-t-4 border-primary-600">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col items-center">
+      <h2 class="text-2xl font-heading font-bold text-white mb-6 tracking-wider">レトア</h2>
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <a href="#about" class="text-sm hover:text-white transition">レトアについて</a>
+        <a href="#services" class="text-sm hover:text-white transition">サービス</a>
+        <a href="#contact" class="text-sm hover:text-white transition">お問い合わせ</a>
+        <a href="#company" class="text-sm hover:text-white transition">会社概要</a>
+      </div>
+      <div class="text-sm text-slate-400">© Letoa All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-2.5 z-50 md:hidden flex justify-center shadow-[0_-5px_10px_rgba(0,0,0,0.05)]">
+    <a href="#contact" class="w-full bg-secondary-600 text-white rounded-md py-2.5 flex flex-col items-center justify-center font-bold shadow-sm active:bg-secondary-700">
+      <span class="text-[11px] mb-0.5"><i class="fa-solid fa-pen-to-square mr-1"></i>無料相談・お問い合わせ</span>
+      <span class="text-sm leading-none tracking-wide">フォーム入力はこちら</span>
+    </a>
+  </div>
+
+  <script src="./assets/main.js"></script>
+</body>
+</html>
