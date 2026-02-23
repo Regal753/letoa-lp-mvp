@@ -1,24 +1,24 @@
 # letoa-lp-mvp
 
-新規事業向けLPのMVPです。既存 `Website` とは完全に別ディレクトリ・別Git管理で運用できます。
+新規事業向けLP（静的サイト）です。既存 `Website` リポジトリとは完全に分離して運用します。
 
 ## ファイル構成
 
 - `index.html`: LP本体
-- `assets/main.css`: 装飾とアニメーション
-- `assets/main.js`: メニュー、FAQ、問い合わせフォーム挙動
+- `assets/main.css`: 見た目・アニメーション・アクセシビリティ調整
+- `assets/main.js`: メニュー、FAQ、問い合わせフォーム（mailto起動）
 
-## 実運用値（Websiteと同一）
+## 実運用値
 
-`assets/main.js` の `LP_CONFIG` に実運用値を設定済みです。
+`assets/main.js` の `LP_CONFIG` に設定しています。
 
 - `contactEmail`: `retoa@regalocom.net`
-- `contactFormUrl`: `https://docs.google.com/forms/d/e/1FAIpQLSdbqMVhTDUHcfhnrv5Vj96aBF9WhyAwysTfmG9CdgElhrGm1A/viewform`
+- `businessHours`: `8:00-20:00（年中無休）`
 
 ## 送信仕様
 
-- LP内フォーム送信: 入力内容を `mailto:` でメール作成画面に渡します
-- Googleフォーム送信: `contactFormUrl` へ直接遷移できます
+- LPフォームは送信時に `mailto:` を生成し、メール作成画面を起動します
+- 直接メール送信したい場合は、画面内のメールリンクを利用します
 
 ## ローカル確認
 
@@ -27,22 +27,14 @@ cd C:\Users\Workp\letoa-lp-mvp
 python -m http.server 8080
 ```
 
-ブラウザで `http://localhost:8080` を開いて確認します。
+ブラウザで `http://localhost:8080` を開きます。
 
-## GitHubへ新規公開
+## 公開先
 
-```powershell
-cd C:\Users\Workp\letoa-lp-mvp
-git add .
-git commit -m "feat: add LP MVP"
-git branch -M main
-git remote add origin https://github.com/<your-account>/<new-repo>.git
-git push -u origin main
-```
+- GitHub: `https://github.com/Regal753/letoa-lp-mvp`
+- GitHub Pages: `https://regal753.github.io/letoa-lp-mvp/`
 
-## デプロイ運用（推奨）
+## デプロイ更新
 
-1. まずは `*.vercel.app` で公開してMVP検証
-2. 問題なければサブドメイン（例: `lp.example.com`）を追加
-3. VercelでCustom Domainを紐付け
+`main` に push すると GitHub Pages が自動で更新されます。
 

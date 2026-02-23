@@ -1,16 +1,16 @@
-﻿const LP_CONFIG = {
+const LP_CONFIG = {
   businessHours: "8:00-20:00（年中無休）",
   contactEmail: "retoa@regalocom.net",
-  contactFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdbqMVhTDUHcfhnrv5Vj96aBF9WhyAwysTfmG9CdgElhrGm1A/viewform",
   companyName: "レトア",
   source: "letoa-lp-mvp",
 };
+
+const PHONE_REGEX = /^[0-9+\-()\s]{9,15}$/;
 
 const updateContactInfo = () => {
   const emailAnchors = document.querySelectorAll("[data-email-anchor]");
   const emailDisplays = document.querySelectorAll("[data-contact-email]");
   const hoursDisplays = document.querySelectorAll("[data-business-hours]");
-  const formAnchors = document.querySelectorAll("[data-contact-form-url]");
 
   emailAnchors.forEach((anchor) => {
     anchor.setAttribute("href", `mailto:${LP_CONFIG.contactEmail}`);
@@ -22,10 +22,6 @@ const updateContactInfo = () => {
 
   hoursDisplays.forEach((node) => {
     node.textContent = LP_CONFIG.businessHours;
-  });
-
-  formAnchors.forEach((anchor) => {
-    anchor.setAttribute("href", LP_CONFIG.contactFormUrl);
   });
 };
 
@@ -43,20 +39,38 @@ const initMobileMenu = () => {
     icon?.classList.add("fa-bars");
   };
 
+  const openMenu = () => {
+    mobileMenu.classList.remove("hidden");
+    menuBtn.setAttribute("aria-expanded", "true");
+    icon?.classList.remove("fa-bars");
+    icon?.classList.add("fa-xmark");
+  };
+
   menuBtn.addEventListener("click", () => {
-    const isHidden = mobileMenu.classList.toggle("hidden");
-    menuBtn.setAttribute("aria-expanded", String(!isHidden));
+    const isHidden = mobileMenu.classList.contains("hidden");
     if (isHidden) {
-      icon?.classList.remove("fa-xmark");
-      icon?.classList.add("fa-bars");
+      openMenu();
     } else {
-      icon?.classList.remove("fa-bars");
-      icon?.classList.add("fa-xmark");
+      closeMenu();
     }
   });
 
   mobileMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("click", (event) => {
+    const isOpen = !mobileMenu.classList.contains("hidden");
+    if (!isOpen) return;
+    if (!mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
   });
 };
 
@@ -81,20 +95,20 @@ const setStatus = (message, statusType) => {
   if (statusType === "error") statusEl.classList.add("is-error");
 };
 
-const buildMailtoLink = (formData) => {
-  const category = formData.get("category") || "その他";
-  const subject = `[${LP_CONFIG.companyName}] ${category}のお問い合わせ`;
+const sanitize = (value) => value.trim().replace(/\s+/g, " ");
 
+const buildMailtoLink = (fields) => {
+  const subject = `[${LP_CONFIG.companyName}] ${fields.category}のお問い合わせ`;
   const bodyLines = [
     "以下の内容でお問い合わせがありました。",
     "",
-    `お名前: ${formData.get("name") || ""}`,
-    `電話番号: ${formData.get("phone") || ""}`,
-    `メールアドレス: ${formData.get("email") || ""}`,
-    `お問い合わせ種別: ${category}`,
+    `お名前: ${fields.name}`,
+    `電話番号: ${fields.phone}`,
+    `メールアドレス: ${fields.email}`,
+    `お問い合わせ種別: ${fields.category}`,
     "",
     "ご相談内容:",
-    `${formData.get("message") || ""}`,
+    fields.message,
     "",
     `送信元: ${LP_CONFIG.source}`,
     `ページURL: ${window.location.href}`,
@@ -105,11 +119,45 @@ const buildMailtoLink = (formData) => {
   return `mailto:${LP_CONFIG.contactEmail}?subject=${encodedSubject}&body=${encodedBody}`;
 };
 
+const collectFormFields = (form) => {
+  const formData = new FormData(form);
+  return {
+    name: sanitize(String(formData.get("name") || "")),
+    phone: sanitize(String(formData.get("phone") || "")),
+    email: sanitize(String(formData.get("email") || "")),
+    category: sanitize(String(formData.get("category") || "その他")),
+    message: String(formData.get("message") || "").trim(),
+  };
+};
+
+const validateFormFields = (fields, consentChecked) => {
+  if (!fields.name || !fields.phone || !fields.email || !fields.message) {
+    return "未入力の必須項目があります。";
+  }
+
+  if (!PHONE_REGEX.test(fields.phone)) {
+    return "電話番号の形式が正しくありません。";
+  }
+
+  if (fields.message.length < 10) {
+    return "ご相談内容は10文字以上で入力してください。";
+  }
+
+  if (!consentChecked) {
+    return "個人情報の取扱いへの同意が必要です。";
+  }
+
+  return "";
+};
+
 const initContactForm = () => {
   const form = document.getElementById("contact-form");
   const submitBtn = document.getElementById("submit-btn");
   const honeypot = document.getElementById("company");
-  if (!form || !submitBtn || !honeypot) return;
+  const consent = document.getElementById("consent");
+  if (!form || !submitBtn || !honeypot || !consent) return;
+
+  const defaultButtonHtml = submitBtn.innerHTML;
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -120,13 +168,15 @@ const initContactForm = () => {
       return;
     }
 
-    if (!form.reportValidity()) {
-      setStatus("未入力の必須項目があります。", "error");
+    if (!LP_CONFIG.contactEmail) {
+      setStatus("送信先メールが未設定です。", "error");
       return;
     }
 
-    if (!LP_CONFIG.contactEmail) {
-      setStatus("送信先メールが未設定です。", "error");
+    const fields = collectFormFields(form);
+    const error = validateFormFields(fields, consent.checked);
+    if (error) {
+      setStatus(error, "error");
       return;
     }
 
@@ -134,15 +184,14 @@ const initContactForm = () => {
     submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>起動中...';
 
     try {
-      const formData = new FormData(form);
-      const mailtoLink = buildMailtoLink(formData);
-      window.location.href = mailtoLink;
-      setStatus("メール作成画面を開きました。開けない場合はGoogleフォームをご利用ください。", "success");
-    } catch (error) {
-      setStatus("メール画面を起動できませんでした。Googleフォームをご利用ください。", "error");
+      const mailtoLink = buildMailtoLink(fields);
+      window.location.assign(mailtoLink);
+      setStatus("メール作成画面を開きました。送信を完了してください。", "success");
+    } catch (errorCaught) {
+      setStatus("メール画面を起動できませんでした。メールアドレスへ直接ご連絡ください。", "error");
     } finally {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane mr-2"></i>この内容で送信する';
+      submitBtn.innerHTML = defaultButtonHtml;
     }
   });
 };
@@ -153,3 +202,4 @@ document.addEventListener("DOMContentLoaded", () => {
   initFaq();
   initContactForm();
 });
+
