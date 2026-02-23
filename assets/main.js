@@ -6,6 +6,8 @@ const LP_CONFIG = {
 };
 
 const PHONE_REGEX = /^[0-9+\-()\s]{9,15}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_MAILTO_URL_LENGTH = 1800;
 
 const updateContactInfo = () => {
   const emailAnchors = document.querySelectorAll("[data-email-anchor]");
@@ -135,6 +137,10 @@ const validateFormFields = (fields, consentChecked) => {
     return "未入力の必須項目があります。";
   }
 
+  if (!EMAIL_REGEX.test(fields.email)) {
+    return "メールアドレスの形式が正しくありません。";
+  }
+
   if (!PHONE_REGEX.test(fields.phone)) {
     return "電話番号の形式が正しくありません。";
   }
@@ -153,7 +159,7 @@ const validateFormFields = (fields, consentChecked) => {
 const initContactForm = () => {
   const form = document.getElementById("contact-form");
   const submitBtn = document.getElementById("submit-btn");
-  const honeypot = document.getElementById("company");
+  const honeypot = document.getElementById("contact_company");
   const consent = document.getElementById("consent");
   if (!form || !submitBtn || !honeypot || !consent) return;
 
@@ -162,6 +168,11 @@ const initContactForm = () => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     setStatus("", "");
+
+    if (!form.reportValidity()) {
+      setStatus("未入力または形式エラーの項目があります。", "error");
+      return;
+    }
 
     if (honeypot.value) {
       setStatus("送信に失敗しました。時間をおいて再度お試しください。", "error");
@@ -185,6 +196,10 @@ const initContactForm = () => {
 
     try {
       const mailtoLink = buildMailtoLink(fields);
+      if (mailtoLink.length > MAX_MAILTO_URL_LENGTH) {
+        setStatus("ご相談内容が長いため送信できません。内容を短くして再度お試しください。", "error");
+        return;
+      }
       window.location.assign(mailtoLink);
       setStatus("メール作成画面を開きました。送信を完了してください。", "success");
     } catch (errorCaught) {
@@ -202,4 +217,3 @@ document.addEventListener("DOMContentLoaded", () => {
   initFaq();
   initContactForm();
 });
-
