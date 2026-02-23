@@ -1,6 +1,8 @@
 const LP_CONFIG = {
   businessHours: "8:00-20:00（年中無休）",
   contactEmail: "retoa@regalocom.net",
+  phoneDisplay: "000-0000-0000",
+  phoneLink: "0000000000",
   companyName: "レトア",
   source: "letoa-lp-mvp",
 };
@@ -9,10 +11,32 @@ const PHONE_REGEX = /^[0-9+\-()\s]{9,15}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_MAILTO_URL_LENGTH = 1800;
 
+const sanitize = (value) => value.trim().replace(/\s+/g, " ");
+
+const normalizePhoneHrefValue = (rawPhone) => {
+  let normalized = String(rawPhone || "").trim().replace(/[^\d+]/g, "");
+  if (!normalized) {
+    return "0000000000";
+  }
+
+  if (normalized.startsWith("+")) {
+    normalized = `+${normalized.slice(1).replace(/\+/g, "")}`;
+  } else {
+    normalized = normalized.replace(/\+/g, "");
+  }
+
+  return normalized;
+};
+
 const updateContactInfo = () => {
   const emailAnchors = document.querySelectorAll("[data-email-anchor]");
   const emailDisplays = document.querySelectorAll("[data-contact-email]");
   const hoursDisplays = document.querySelectorAll("[data-business-hours]");
+  const phoneAnchors = document.querySelectorAll("[data-phone-anchor]");
+  const phoneDisplays = document.querySelectorAll("[data-phone-display]");
+
+  const phoneHrefValue = normalizePhoneHrefValue(LP_CONFIG.phoneLink || LP_CONFIG.phoneDisplay);
+  const phoneHref = `tel:${phoneHrefValue}`;
 
   emailAnchors.forEach((anchor) => {
     anchor.setAttribute("href", `mailto:${LP_CONFIG.contactEmail}`);
@@ -24,6 +48,14 @@ const updateContactInfo = () => {
 
   hoursDisplays.forEach((node) => {
     node.textContent = LP_CONFIG.businessHours;
+  });
+
+  phoneAnchors.forEach((anchor) => {
+    anchor.setAttribute("href", phoneHref);
+  });
+
+  phoneDisplays.forEach((node) => {
+    node.textContent = LP_CONFIG.phoneDisplay;
   });
 };
 
@@ -91,13 +123,13 @@ const initFaq = () => {
 const setStatus = (message, statusType) => {
   const statusEl = document.getElementById("contact-status");
   if (!statusEl) return;
+
   statusEl.textContent = message;
   statusEl.classList.remove("is-success", "is-error");
+
   if (statusType === "success") statusEl.classList.add("is-success");
   if (statusType === "error") statusEl.classList.add("is-error");
 };
-
-const sanitize = (value) => value.trim().replace(/\s+/g, " ");
 
 const buildMailtoLink = (fields) => {
   const subject = `[${LP_CONFIG.companyName}] ${fields.category}のお問い合わせ`;
@@ -123,6 +155,7 @@ const buildMailtoLink = (fields) => {
 
 const collectFormFields = (form) => {
   const formData = new FormData(form);
+
   return {
     name: sanitize(String(formData.get("name") || "")),
     phone: sanitize(String(formData.get("phone") || "")),
@@ -161,6 +194,7 @@ const initContactForm = () => {
   const submitBtn = document.getElementById("submit-btn");
   const honeypot = document.getElementById("contact_company");
   const consent = document.getElementById("consent");
+
   if (!form || !submitBtn || !honeypot || !consent) return;
 
   const defaultButtonHtml = submitBtn.innerHTML;
@@ -170,7 +204,7 @@ const initContactForm = () => {
     setStatus("", "");
 
     if (!form.reportValidity()) {
-      setStatus("未入力または形式エラーの項目があります。", "error");
+      setStatus("未入力または形式エラーがあります。", "error");
       return;
     }
 
@@ -192,7 +226,7 @@ const initContactForm = () => {
     }
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>起動中...';
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>送信準備中...';
 
     try {
       const mailtoLink = buildMailtoLink(fields);
@@ -200,8 +234,9 @@ const initContactForm = () => {
         setStatus("ご相談内容が長いため送信できません。内容を短くして再度お試しください。", "error");
         return;
       }
+
       window.location.assign(mailtoLink);
-      setStatus("メール作成画面を開きました。送信を完了してください。", "success");
+      setStatus("メール作成画面を開きました。内容確認のうえ送信してください。", "success");
     } catch (errorCaught) {
       setStatus("メール画面を起動できませんでした。メールアドレスへ直接ご連絡ください。", "error");
     } finally {

@@ -1,0 +1,26 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Gas stove service image</title>
+  <desc id="desc">Illustrative image of gas stove top with flame and maintenance icon.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <rect x="130" y="190" width="700" height="230" rx="24" fill="#ffffff" stroke="#94a3b8" stroke-width="8"/>
+  <circle cx="340" cy="305" r="78" fill="#cbd5e1" stroke="#64748b" stroke-width="8"/>
+  <circle cx="340" cy="305" r="34" fill="#1e293b"/>
+  <circle cx="620" cy="305" r="78" fill="#cbd5e1" stroke="#64748b" stroke-width="8"/>
+  <circle cx="620" cy="305" r="34" fill="#1e293b"/>
+
+  <path d="M340 270 C320 250 320 230 340 208 C360 230 360 250 340 270 Z" fill="#f97316"/>
+  <path d="M620 270 C600 250 600 230 620 208 C640 230 640 250 620 270 Z" fill="#fb923c"/>
+
+  <rect x="230" y="440" width="140" height="28" rx="12" fill="#64748b"/>
+  <rect x="510" y="440" width="140" height="28" rx="12" fill="#64748b"/>
+
+  <circle cx="820" cy="130" r="50" fill="#0284c7"/>
+  <path d="M792 130 l18 18 M810 112 l18 18 M830 112 l-18 18 M848 130 l-18 18" stroke="#ffffff" stroke-width="10" stroke-linecap="round"/>
+</svg>

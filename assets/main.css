@@ -40,6 +40,25 @@ body {
   background: linear-gradient(130deg, rgba(14, 165, 233, 0.35), rgba(13, 148, 136, 0.35));
 }
 
+.hero-emphasis {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.06em;
+  z-index: 0;
+}
+
+.hero-emphasis::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.02em;
+  height: 0.14em;
+  background: #f97316;
+  border-radius: 999px;
+  z-index: -1;
+}
+
 .animate-fade-up {
   animation: fade-up 0.6s ease both;
 }
