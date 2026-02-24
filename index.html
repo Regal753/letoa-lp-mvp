@@ -42,17 +42,17 @@
     })();
   </script>
 </head>
-<body id="top" class="bg-white text-slate-800 pt-20 pb-24 md:pb-0">
+<body id="top" class="bg-white text-slate-800 pt-20 pb-24 md:pt-32 md:pb-0">
   <a href="#main-content" class="skip-link">本文へ移動</a>
 
-  <header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm shadow-sm border-b border-slate-200 z-50">
+  <header id="site-header" class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm shadow-sm border-b border-slate-200 z-50">
     <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
       <a href="#top" class="flex flex-col">
         <span class="text-[10px] md:text-xs text-slate-500 font-medium tracking-wider">長岡京市の設備トラブル解決</span>
         <span class="text-xl md:text-2xl font-heading font-bold text-primary-800 tracking-tight">レトア</span>
       </a>
 
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700" aria-label="主要メニュー">
+      <nav class="hidden xl:flex items-center gap-6 text-sm font-medium text-slate-700" aria-label="主要メニュー">
         <a href="#about" class="hover:text-primary-600 transition">レトアについて</a>
         <a href="#proof" class="hover:text-primary-600 transition">対応事例</a>
         <a href="#voices" class="hover:text-primary-600 transition">お客様の声</a>
@@ -64,7 +64,7 @@
         <a href="#contact" class="hover:text-primary-600 transition">お問い合わせ</a>
       </nav>
 
-      <div class="hidden md:flex items-center gap-4">
+      <div class="hidden xl:flex items-center gap-4">
         <div class="text-right">
           <p class="text-xs text-slate-500 mb-0.5"><span data-business-hours>9:00-20:00</span></p>
           <a data-phone-anchor href="tel:07091317882" class="text-2xl font-extrabold text-accent-600 flex items-center justify-end gap-2 hover:text-accent-500 transition leading-none">
@@ -80,12 +80,25 @@
         </a>
       </div>
 
-      <button id="mobile-menu-btn" type="button" class="md:hidden text-2xl text-slate-700 p-2" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+      <button id="mobile-menu-btn" type="button" class="xl:hidden text-2xl text-slate-700 p-2" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
+    <div class="hidden md:block border-t border-slate-700/40 bg-slate-900/95">
+      <div class="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between gap-3">
+        <p class="text-xs lg:text-sm text-slate-100 font-medium tracking-wide">
+          給湯器・ガス・水漏れの緊急トラブルは電話が最短です
+        </p>
+        <a data-phone-anchor href="tel:07091317882" class="header-hotline phone-cta">
+          <i class="fa-solid fa-phone-volume"></i>
+          <span class="header-hotline__label">今すぐ電話:</span>
+          <span class="header-hotline__number" data-phone-display>070-9131-7882</span>
+        </a>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
       <nav class="flex flex-col text-base font-medium text-slate-700 p-4 space-y-4" aria-label="モバイルメニュー">
         <a href="#about" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>レトアについて</a>
         <a href="#proof" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>対応事例</a>
@@ -108,7 +121,7 @@
   </header>
 
   <main id="main-content">
-    <section class="relative bg-slate-100 pt-16 pb-20 md:pt-32 md:pb-32 overflow-hidden border-b border-slate-200">
+    <section class="hero-section relative bg-slate-100 pt-16 pb-20 md:pt-32 md:pb-32 overflow-hidden border-b border-slate-200">
       <div class="hero-grid absolute inset-0 opacity-25"></div>
       <div class="hero-grad absolute -right-20 top-10 w-72 h-72 rounded-full blur-3xl"></div>
 
@@ -118,13 +131,24 @@
             <span class="bg-primary-600 text-white text-xs md:text-sm font-bold px-3 py-1 rounded-sm">長岡京市密着</span>
             <span class="bg-secondary-600 text-white text-xs md:text-sm font-bold px-3 py-1 rounded-sm">見積り無料</span>
           </div>
-          <h1 class="text-2xl md:text-4xl lg:text-5xl font-heading font-bold text-slate-800 leading-snug md:leading-tight mb-6">
-            朝起きたら<span class="hero-emphasis text-primary-700">お湯が出ない...</span><br>
+          <h1 class="text-3xl md:text-[2.85rem] lg:text-[3.2rem] font-heading font-bold text-slate-800 leading-tight mb-6">
+            朝起きたら<span class="hero-emphasis text-primary-700">お湯が出ない！</span><br>
             そのトラブル、地元のレトアが<br class="hidden md:block">誠実に解決します。
           </h1>
           <p class="text-base md:text-lg text-slate-600 mb-8 leading-relaxed font-medium">
             長岡京市・近隣エリア密着。見積り後の追加請求は行わず、わかりやすい説明と適正価格で対応します。
           </p>
+          <div class="hero-inline-contact mb-8">
+            <span class="hero-inline-contact__label">電話受付</span>
+            <a data-phone-anchor href="tel:07091317882" class="hero-inline-contact__phone">
+              <i class="fa-solid fa-phone-volume"></i>
+              <span data-phone-display>070-9131-7882</span>
+            </a>
+            <span class="hero-inline-contact__hours">
+              <i class="fa-regular fa-clock"></i>
+              <span data-business-hours>9:00-20:00</span>
+            </span>
+          </div>
           <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
             <li class="hero-chip"><i class="fa-solid fa-circle-check text-secondary-600 mr-2"></i>見積り後の追加請求0円</li>
             <li class="hero-chip"><i class="fa-solid fa-circle-check text-secondary-600 mr-2"></i>最短当日訪問に対応</li>
@@ -132,19 +156,21 @@
             <li class="hero-chip"><i class="fa-solid fa-circle-check text-secondary-600 mr-2"></i>施工後のアフター相談も可</li>
           </ul>
           <div class="hidden md:flex flex-wrap gap-3">
-            <a data-phone-anchor href="tel:07091317882" class="phone-cta inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white text-base font-bold px-6 py-4 rounded-md shadow-md transition">
-              <i class="fa-solid fa-phone-volume mr-2"></i>
-              <span class="mr-2">お急ぎは電話</span>
-              <span data-phone-display>070-9131-7882</span>
+            <a data-phone-anchor href="tel:07091317882" class="hero-call-main phone-cta">
+              <span class="hero-call-main__label">最短でつながる電話窓口</span>
+              <span class="hero-call-main__number">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span data-phone-display>070-9131-7882</span>
+              </span>
             </a>
-            <a href="#contact" class="inline-flex items-center justify-center bg-secondary-600 hover:bg-secondary-700 text-white text-base font-bold px-6 py-4 rounded-md shadow-md transition">
-              <i class="fa-solid fa-pen-to-square mr-2"></i>フォームで相談する
+            <a href="#contact" class="inline-flex items-center justify-center bg-white hover:bg-slate-50 text-slate-700 text-base font-bold px-6 py-4 rounded-md shadow-md border border-slate-300 transition">
+              <i class="fa-solid fa-pen-to-square mr-2 text-primary-600"></i>メール・フォーム相談
             </a>
           </div>
         </div>
 
         <div class="w-full md:w-2/5 animate-fade-up delay-100">
-          <div class="aspect-[4/3] bg-slate-200 rounded-xl shadow-inner border border-slate-300 flex items-center justify-center overflow-hidden">
+          <div class="relative aspect-[4/3] bg-slate-200 rounded-xl shadow-inner border border-slate-300 flex items-center justify-center overflow-hidden">
             <img
               src="./assets/images/hero-work-photo.svg"
               alt="施工スタッフが設備を点検しているイメージ"
@@ -154,6 +180,14 @@
               loading="eager"
               decoding="async"
             >
+            <div class="hero-side-card">
+              <p class="hero-side-card__title">緊急時は電話相談が最短</p>
+              <a data-phone-anchor href="tel:07091317882" class="hero-side-card__phone">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span data-phone-display>070-9131-7882</span>
+              </a>
+              <p class="hero-side-card__hours"><i class="fa-regular fa-clock"></i> 受付 <span data-business-hours>9:00-20:00</span></p>
+            </div>
           </div>
         </div>
       </div>
@@ -218,6 +252,17 @@
               <p class="pattern-desc">止水の応急処置後に原因を確認し、必要作業を明確に提示します。</p>
             </article>
           </div>
+        </div>
+
+        <div class="section-call-band mt-10">
+          <div>
+            <p class="section-call-band__lead">迷ったら、まずは電話で状況確認</p>
+            <p class="section-call-band__copy">症状を伺って、必要な対応と訪問可否をその場で案内します。</p>
+          </div>
+          <a data-phone-anchor href="tel:07091317882" class="section-call-band__button phone-cta">
+            <i class="fa-solid fa-phone-volume"></i>
+            <span data-phone-display>070-9131-7882</span>
+          </a>
         </div>
       </div>
     </section>
@@ -542,8 +587,8 @@
           <p class="text-primary-100 mt-3 text-sm md:text-base">症状を伺い、必要な対応と概算の流れをその場でご案内します。</p>
         </div>
         <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-          <a data-phone-anchor href="tel:07091317882" class="phone-cta inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white font-bold px-6 py-4 rounded-md shadow-lg transition">
-            <i class="fa-solid fa-phone-volume mr-2"></i>
+          <a data-phone-anchor href="tel:07091317882" class="phone-cta inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white font-bold px-6 py-4 rounded-md shadow-lg transition ring-2 ring-orange-300/50">
+            <i class="fa-solid fa-phone-volume mr-2 phone-pulse-icon"></i>
             <span data-phone-display>070-9131-7882</span>
           </a>
           <a href="#contact" class="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-4 rounded-md border border-white/30 transition">

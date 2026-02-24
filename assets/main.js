@@ -148,6 +148,19 @@ const initRevealEffects = () => {
   revealItems.forEach((item) => observer.observe(item));
 };
 
+const initHeaderState = () => {
+  const header = document.getElementById("site-header");
+  if (!header) return;
+
+  const onScroll = () => {
+    const shouldElevate = window.scrollY > 12;
+    header.classList.toggle("is-scrolled", shouldElevate);
+  };
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+};
+
 const initMessageCounter = () => {
   const message = document.getElementById("message");
   const counter = document.getElementById("message-count");
@@ -378,6 +391,7 @@ const initContactForm = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   updateContactInfo();
+  initHeaderState();
   initMobileMenu();
   initPhoneLinkBehavior();
   syncStructuredData();
