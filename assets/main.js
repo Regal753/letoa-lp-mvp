@@ -263,7 +263,8 @@ const submitFormViaApi = async (fields) => {
   }
 
   const json = await response.json().catch(() => null);
-  if (!json || json.success !== "true") {
+  const isSuccess = json && (json.success === true || json.success === "true");
+  if (!isSuccess) {
     throw new Error("api_invalid_response");
   }
 
