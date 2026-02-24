@@ -147,6 +147,39 @@ const initRevealEffects = () => {
   revealItems.forEach((item) => observer.observe(item));
 };
 
+const initMessageCounter = () => {
+  const message = document.getElementById("message");
+  const counter = document.getElementById("message-count");
+  if (!message || !counter) return;
+
+  const updateCount = () => {
+    counter.textContent = String(message.value.length);
+  };
+
+  message.addEventListener("input", updateCount);
+  updateCount();
+};
+
+const initPhoneLinkBehavior = () => {
+  const phoneAnchors = document.querySelectorAll("[data-phone-anchor]");
+  if (!phoneAnchors.length) return;
+
+  phoneAnchors.forEach((anchor) => {
+    if (!anchor.getAttribute("aria-label")) {
+      anchor.setAttribute("aria-label", `電話で相談する ${LP_CONFIG.phoneDisplay}`);
+    }
+
+    anchor.addEventListener("click", () => {
+      if (!Array.isArray(window.dataLayer)) return;
+      window.dataLayer.push({
+        event: "lp_phone_click",
+        phone: LP_CONFIG.phoneDisplay,
+        source: LP_CONFIG.source,
+      });
+    });
+  });
+};
+
 const setStatus = (message, statusType) => {
   const statusEl = document.getElementById("contact-status");
   if (!statusEl) return;
@@ -167,6 +200,8 @@ const buildMailtoLink = (fields) => {
     `電話番号: ${fields.phone}`,
     `メールアドレス: ${fields.email}`,
     `お問い合わせ種別: ${fields.category}`,
+    `ご連絡希望時間帯: ${fields.preferredContact}`,
+    `緊急対応希望: ${fields.isUrgent}`,
     "",
     "ご相談内容:",
     fields.message,
@@ -188,6 +223,8 @@ const collectFormFields = (form) => {
     phone: sanitize(String(formData.get("phone") || "")),
     email: sanitize(String(formData.get("email") || "")),
     category: sanitize(String(formData.get("category") || "その他")),
+    preferredContact: sanitize(String(formData.get("preferredContact") || "指定なし")),
+    isUrgent: formData.get("isUrgent") ? "希望する" : "通常",
     message: String(formData.get("message") || "").trim(),
   };
 };
@@ -276,7 +313,9 @@ const initContactForm = () => {
 document.addEventListener("DOMContentLoaded", () => {
   updateContactInfo();
   initMobileMenu();
+  initPhoneLinkBehavior();
   initRevealEffects();
   initFaq();
+  initMessageCounter();
   initContactForm();
 });
