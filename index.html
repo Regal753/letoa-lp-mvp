@@ -71,8 +71,10 @@
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-700" aria-label="主要メニュー">
         <a href="#about" class="hover:text-primary-600 transition">レトアについて</a>
+        <a href="#proof" class="hover:text-primary-600 transition">対応事例</a>
         <a href="#reasons" class="hover:text-primary-600 transition">選ばれる理由</a>
         <a href="#services" class="hover:text-primary-600 transition">対応サービス</a>
+        <a href="#pricing" class="hover:text-primary-600 transition">料金目安</a>
         <a href="#flow" class="hover:text-primary-600 transition">ご依頼の流れ</a>
         <a href="#faq" class="hover:text-primary-600 transition">FAQ</a>
         <a href="#contact" class="hover:text-primary-600 transition">お問い合わせ</a>
@@ -102,8 +104,10 @@
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
       <nav class="flex flex-col text-base font-medium text-slate-700 p-4 space-y-4" aria-label="モバイルメニュー">
         <a href="#about" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>レトアについて</a>
+        <a href="#proof" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>対応事例</a>
         <a href="#reasons" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>選ばれる理由</a>
         <a href="#services" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>対応サービス</a>
+        <a href="#pricing" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>料金目安</a>
         <a href="#flow" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>ご依頼の流れ</a>
         <a href="#faq" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>FAQ</a>
         <a href="#contact"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>お問い合わせ</a>
@@ -136,8 +140,14 @@
           <p class="text-base md:text-lg text-slate-600 mb-8 leading-relaxed font-medium">
             長岡京市・近隣エリア密着。見積り後の追加請求は行わず、わかりやすい説明と適正価格で対応します。
           </p>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+            <li class="hero-chip"><i class="fa-solid fa-circle-check text-secondary-600 mr-2"></i>見積り後の追加請求0円</li>
+            <li class="hero-chip"><i class="fa-solid fa-circle-check text-secondary-600 mr-2"></i>最短当日訪問に対応</li>
+            <li class="hero-chip"><i class="fa-solid fa-circle-check text-secondary-600 mr-2"></i>代替機対応で生活を止めない</li>
+            <li class="hero-chip"><i class="fa-solid fa-circle-check text-secondary-600 mr-2"></i>施工後のアフター相談も可</li>
+          </ul>
           <div class="hidden md:flex flex-wrap gap-3">
-            <a data-phone-anchor href="tel:0000000000" class="inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white text-base font-bold px-6 py-4 rounded-md shadow-md transition">
+            <a data-phone-anchor href="tel:0000000000" class="phone-cta inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white text-base font-bold px-6 py-4 rounded-md shadow-md transition">
               <i class="fa-solid fa-phone-volume mr-2"></i>
               <span class="mr-2">お急ぎは電話</span>
               <span data-phone-display>000-0000-0000</span>
@@ -174,6 +184,56 @@
             <span class="truncate">設備トラブル対応サービス「レトア」の新規LPを公開しました。</span>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <section id="proof" class="py-16 md:py-20 bg-white border-t border-slate-200 scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <span class="text-primary-600 font-bold tracking-widest text-sm uppercase">Proof</span>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-slate-800 mt-2">まず確認したい4つの安心材料</h2>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          <article class="kpi-card reveal-item" style="--reveal-delay: 0ms;">
+            <div class="kpi-icon"><i class="fa-solid fa-yen-sign"></i></div>
+            <p class="kpi-label">見積り費用</p>
+            <p class="kpi-value">0円</p>
+          </article>
+          <article class="kpi-card reveal-item" style="--reveal-delay: 80ms;">
+            <div class="kpi-icon"><i class="fa-solid fa-file-circle-check"></i></div>
+            <p class="kpi-label">追加請求</p>
+            <p class="kpi-value">なし</p>
+          </article>
+          <article class="kpi-card reveal-item" style="--reveal-delay: 160ms;">
+            <div class="kpi-icon"><i class="fa-solid fa-clock"></i></div>
+            <p class="kpi-label">電話受付</p>
+            <p class="kpi-value"><span data-business-hours>8:00-20:00（年中無休）</span></p>
+          </article>
+          <article class="kpi-card reveal-item" style="--reveal-delay: 240ms;">
+            <div class="kpi-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <p class="kpi-label">対応エリア</p>
+            <p class="kpi-value">長岡京市中心</p>
+          </article>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-8">
+          <p class="text-sm text-primary-700 font-bold tracking-wide">代表的なご相談パターン</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+            <article class="pattern-card reveal-item" style="--reveal-delay: 0ms;">
+              <h3 class="pattern-title"><i class="fa-solid fa-shower text-primary-600 mr-2"></i>給湯器が急に停止</h3>
+              <p class="pattern-desc">在庫状況を確認し、復旧までの工程を当日中に案内します。</p>
+            </article>
+            <article class="pattern-card reveal-item" style="--reveal-delay: 80ms;">
+              <h3 class="pattern-title"><i class="fa-solid fa-fire-burner text-primary-600 mr-2"></i>コンロの点火不良</h3>
+              <p class="pattern-desc">故障箇所を切り分け、交換か修理かを費用とあわせて提案します。</p>
+            </article>
+            <article class="pattern-card reveal-item" style="--reveal-delay: 160ms;">
+              <h3 class="pattern-title"><i class="fa-solid fa-droplet text-primary-600 mr-2"></i>配管からの水漏れ</h3>
+              <p class="pattern-desc">止水の応急処置後に原因を確認し、必要作業を明確に提示します。</p>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -218,7 +278,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <article class="bg-white p-8 rounded-xl shadow-card border border-slate-200 relative pt-12">
+          <article class="bg-white p-8 rounded-xl shadow-card border border-slate-200 relative pt-12 reveal-item" style="--reveal-delay: 0ms;">
             <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-2xl border-4 border-slate-50 shadow-sm">
               <i class="fa-solid fa-toolbox"></i>
             </div>
@@ -226,7 +286,7 @@
             <p class="text-slate-600 leading-relaxed text-sm">交換に日数がかかる場合でも、代替機で当日からお湯を使える状態に近づけます。（状況・在庫による）</p>
           </article>
 
-          <article class="bg-white p-8 rounded-xl shadow-card border border-slate-200 relative pt-12">
+          <article class="bg-white p-8 rounded-xl shadow-card border border-slate-200 relative pt-12 reveal-item" style="--reveal-delay: 80ms;">
             <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-2xl border-4 border-slate-50 shadow-sm">
               <i class="fa-solid fa-file-invoice-dollar"></i>
             </div>
@@ -234,7 +294,7 @@
             <p class="text-slate-600 leading-relaxed text-sm">現場確認後に総額を提示し、ご納得後に作業開始。事後の請求増額は行いません。</p>
           </article>
 
-          <article class="bg-white p-8 rounded-xl shadow-card border border-slate-200 relative pt-12">
+          <article class="bg-white p-8 rounded-xl shadow-card border border-slate-200 relative pt-12 reveal-item" style="--reveal-delay: 160ms;">
             <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-16 h-16 bg-primary-600 text-white rounded-full flex items-center justify-center text-2xl border-4 border-slate-50 shadow-sm">
               <i class="fa-solid fa-handshake"></i>
             </div>
@@ -257,7 +317,7 @@
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition group">
+          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition group reveal-item" style="--reveal-delay: 0ms;">
             <div class="h-40 bg-slate-100 overflow-hidden">
               <img
                 src="./assets/images/service-water-heater.svg"
@@ -275,7 +335,7 @@
             </div>
           </article>
 
-          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition group">
+          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition group reveal-item" style="--reveal-delay: 80ms;">
             <div class="h-40 bg-slate-100 overflow-hidden">
               <img
                 src="./assets/images/service-gas-stove.svg"
@@ -293,7 +353,7 @@
             </div>
           </article>
 
-          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition group">
+          <article class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition group reveal-item" style="--reveal-delay: 160ms;">
             <div class="h-40 bg-slate-100 overflow-hidden">
               <img
                 src="./assets/images/service-water-leak.svg"
@@ -314,7 +374,37 @@
       </div>
     </section>
 
-    <section id="flow" class="py-16 md:py-24 bg-slate-50 border-t border-slate-200 scroll-mt-20">
+    <section id="pricing" class="py-16 md:py-24 bg-slate-50 border-t border-slate-200 scroll-mt-20">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <span class="text-primary-600 font-bold tracking-widest text-sm uppercase">Pricing</span>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-slate-800 mt-2">料金目安</h2>
+          <p class="text-sm md:text-base text-slate-600 mt-4">正確な金額は現場確認後にご提示します。見積りだけのご依頼も無料です。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <article class="price-card reveal-item" style="--reveal-delay: 0ms;">
+            <p class="price-label">見積り・現場確認</p>
+            <p class="price-value">0円</p>
+            <p class="price-note">出張と点検を行い、作業前に総額を共有します。</p>
+          </article>
+
+          <article class="price-card reveal-item" style="--reveal-delay: 80ms;">
+            <p class="price-label">給湯器・コンロ関連</p>
+            <p class="price-value">要見積り</p>
+            <p class="price-note">本体の型番・設置状況で必要部材が変わるため、現場で明確化します。</p>
+          </article>
+
+          <article class="price-card reveal-item" style="--reveal-delay: 160ms;">
+            <p class="price-label">配管・水漏れ対応</p>
+            <p class="price-value">要見積り</p>
+            <p class="price-note">応急処置と根本修理を分けて、優先順位と費用を説明します。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow" class="py-16 md:py-24 bg-white border-t border-slate-200 scroll-mt-20">
       <div class="max-w-5xl mx-auto px-4">
         <div class="text-center mb-12">
           <span class="text-primary-600 font-bold tracking-widest text-sm uppercase">Flow</span>
@@ -324,7 +414,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
           <div class="hidden md:block absolute top-[40px] left-10 right-10 h-0.5 bg-slate-300 z-0"></div>
 
-          <article class="relative z-10 text-center">
+          <article class="relative z-10 text-center reveal-item" style="--reveal-delay: 0ms;">
             <div class="w-20 h-20 bg-white text-primary-600 rounded-full flex flex-col items-center justify-center mx-auto mb-4 border-4 border-slate-200 shadow-sm font-bold">
               <span class="text-xs">STEP</span>
               <span class="text-2xl leading-none">1</span>
@@ -335,7 +425,7 @@
             </div>
           </article>
 
-          <article class="relative z-10 text-center mt-4 md:mt-0">
+          <article class="relative z-10 text-center mt-4 md:mt-0 reveal-item" style="--reveal-delay: 80ms;">
             <div class="w-20 h-20 bg-white text-primary-600 rounded-full flex flex-col items-center justify-center mx-auto mb-4 border-4 border-slate-200 shadow-sm font-bold">
               <span class="text-xs">STEP</span>
               <span class="text-2xl leading-none">2</span>
@@ -346,7 +436,7 @@
             </div>
           </article>
 
-          <article class="relative z-10 text-center mt-4 md:mt-0">
+          <article class="relative z-10 text-center mt-4 md:mt-0 reveal-item" style="--reveal-delay: 160ms;">
             <div class="w-20 h-20 bg-white text-primary-600 rounded-full flex flex-col items-center justify-center mx-auto mb-4 border-4 border-slate-200 shadow-sm font-bold">
               <span class="text-xs">STEP</span>
               <span class="text-2xl leading-none">3</span>
@@ -356,7 +446,7 @@
             </div>
           </article>
 
-          <article class="relative z-10 text-center mt-4 md:mt-0">
+          <article class="relative z-10 text-center mt-4 md:mt-0 reveal-item" style="--reveal-delay: 240ms;">
             <div class="w-20 h-20 bg-primary-600 text-white rounded-full flex flex-col items-center justify-center mx-auto mb-4 border-4 border-primary-200 shadow-sm font-bold">
               <span class="text-xs">STEP</span>
               <span class="text-2xl leading-none">4</span>
@@ -369,7 +459,7 @@
       </div>
     </section>
 
-    <section id="faq" class="py-16 md:py-24 bg-white scroll-mt-20">
+    <section id="faq" class="py-16 md:py-24 bg-slate-50 border-t border-slate-200 scroll-mt-20">
       <div class="max-w-3xl mx-auto px-4">
         <div class="text-center mb-12">
           <span class="text-primary-600 font-bold tracking-widest text-sm uppercase">FAQ</span>
@@ -398,6 +488,47 @@
               <p class="mt-5 text-sm md:text-base">営業時間外の緊急対応は内容により調整可能です。まずはお問い合わせください。</p>
             </div>
           </details>
+
+          <details class="group bg-slate-50 rounded-lg border border-slate-200">
+            <summary class="faq-summary flex justify-between items-center font-bold cursor-pointer list-none p-5 text-slate-800 select-none">
+              <span class="flex items-center"><span class="text-primary-600 mr-4 text-xl">Q.</span> 支払い方法は何がありますか？</span>
+              <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400"><i class="fa-solid fa-chevron-down"></i></span>
+            </summary>
+            <div class="p-5 pt-0 text-slate-700 border-t border-slate-200 mt-2 leading-relaxed flex items-start bg-white rounded-b-lg">
+              <span class="text-secondary-600 font-bold mr-4 text-xl mt-4">A.</span>
+              <p class="mt-5 text-sm md:text-base">現地でご案内します。お見積り時に支払い条件を必ず確認いただいてから作業に入ります。</p>
+            </div>
+          </details>
+
+          <details class="group bg-slate-50 rounded-lg border border-slate-200">
+            <summary class="faq-summary flex justify-between items-center font-bold cursor-pointer list-none p-5 text-slate-800 select-none">
+              <span class="flex items-center"><span class="text-primary-600 mr-4 text-xl">Q.</span> 依頼後にキャンセルはできますか？</span>
+              <span class="transition-transform duration-300 group-open:rotate-180 text-slate-400"><i class="fa-solid fa-chevron-down"></i></span>
+            </summary>
+            <div class="p-5 pt-0 text-slate-700 border-t border-slate-200 mt-2 leading-relaxed flex items-start bg-white rounded-b-lg">
+              <span class="text-secondary-600 font-bold mr-4 text-xl mt-4">A.</span>
+              <p class="mt-5 text-sm md:text-base">見積り提示後、作業開始前であればキャンセル可能です。まずは遠慮なくご相談ください。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 bg-primary-900 text-white border-t border-primary-800">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <p class="text-xs font-bold tracking-[0.2em] text-primary-100">EMERGENCY SUPPORT</p>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold mt-2">今日中に解決したいなら、まず電話でご相談ください</h2>
+          <p class="text-primary-100 mt-3 text-sm md:text-base">症状を伺い、必要な対応と概算の流れをその場でご案内します。</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <a data-phone-anchor href="tel:0000000000" class="phone-cta inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white font-bold px-6 py-4 rounded-md shadow-lg transition">
+            <i class="fa-solid fa-phone-volume mr-2"></i>
+            <span data-phone-display>000-0000-0000</span>
+          </a>
+          <a href="#contact" class="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-4 rounded-md border border-white/30 transition">
+            <i class="fa-solid fa-pen-to-square mr-2"></i>フォームで相談
+          </a>
         </div>
       </div>
     </section>
@@ -428,7 +559,8 @@
 
         <div class="bg-white rounded-xl border border-slate-200 shadow-card p-6 md:p-8 space-y-6">
           <div class="rounded-lg border border-primary-100 bg-primary-50 p-4 text-sm text-primary-900">
-            入力後にメール作成画面が開きます。メールアプリが使えない場合は、上記メールアドレスへ直接ご連絡ください。
+            <p class="font-bold">お急ぎの場合は電話相談が最短です。</p>
+            <p class="mt-1">フォーム送信後はメール作成画面が開きます。メールアプリが使えない場合は、上記メールアドレスへ直接ご連絡ください。</p>
           </div>
 
           <form id="contact-form" class="space-y-6">
@@ -531,7 +663,9 @@
       <h2 class="text-2xl font-heading font-bold text-white mb-6 tracking-wider">レトア</h2>
       <div class="flex flex-wrap justify-center gap-4 mb-8">
         <a href="#about" class="text-sm hover:text-white transition">レトアについて</a>
+        <a href="#proof" class="text-sm hover:text-white transition">対応事例</a>
         <a href="#services" class="text-sm hover:text-white transition">サービス</a>
+        <a href="#pricing" class="text-sm hover:text-white transition">料金目安</a>
         <a href="#contact" class="text-sm hover:text-white transition">お問い合わせ</a>
         <a href="#company" class="text-sm hover:text-white transition">会社概要</a>
       </div>
@@ -560,7 +694,10 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "レトア",
+    "description": "長岡京市・近隣エリアの設備トラブルに対応する地域密着サービスです。",
     "areaServed": "京都府長岡京市",
+    "serviceType": ["給湯器トラブル対応", "ガスコンロトラブル対応", "配管・水漏れトラブル対応"],
+    "priceRange": "要見積り",
     "telephone": "000-0000-0000",
     "email": "retoa@regalocom.net",
     "openingHours": "Mo-Su 08:00-20:00",

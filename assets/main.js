@@ -120,6 +120,33 @@ const initFaq = () => {
   });
 };
 
+const initRevealEffects = () => {
+  const revealItems = document.querySelectorAll(".reveal-item");
+  if (!revealItems.length) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion || typeof IntersectionObserver === "undefined") {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, observeRef) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observeRef.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.18,
+      rootMargin: "0px 0px -36px 0px",
+    }
+  );
+
+  revealItems.forEach((item) => observer.observe(item));
+};
+
 const setStatus = (message, statusType) => {
   const statusEl = document.getElementById("contact-status");
   if (!statusEl) return;
@@ -249,6 +276,7 @@ const initContactForm = () => {
 document.addEventListener("DOMContentLoaded", () => {
   updateContactInfo();
   initMobileMenu();
+  initRevealEffects();
   initFaq();
   initContactForm();
 });
