@@ -10,59 +10,37 @@
   <meta property="og:description" content="地元密着でスピード対応。見積り後の追加請求なし。">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:url" content="https://regal753.github.io/letoa-lp-mvp/">
-  <meta property="og:image" content="https://regal753.github.io/letoa-lp-mvp/assets/images/hero-work-photo.svg">
-  <meta property="og:image:alt" content="施工スタッフが設備を点検しているイメージ">
+  <meta property="og:url" content="./">
+  <meta property="og:image" content="./assets/images/og-default.png">
+  <meta property="og:image:alt" content="長岡京市の設備トラブル解決 レトア">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="長岡京市の設備トラブル解決 | レトア">
   <meta name="twitter:description" content="給湯器・ガスコンロ・配管トラブルを地元密着で対応。見積り無料・追加請求なし。">
-  <meta name="twitter:image" content="https://regal753.github.io/letoa-lp-mvp/assets/images/hero-work-photo.svg">
-  <link rel="canonical" href="https://regal753.github.io/letoa-lp-mvp/">
+  <meta name="twitter:image" content="./assets/images/og-default.png">
+  <link rel="canonical" href="./">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Noto Sans JP"', 'sans-serif'],
-            heading: ['"Zen Kaku Gothic New"', '"Noto Sans JP"', 'sans-serif']
-          },
-          colors: {
-            primary: {
-              50: '#f0f9ff',
-              100: '#e0f2fe',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              700: '#0369a1',
-              800: '#075985',
-              900: '#0c4a6e'
-            },
-            secondary: {
-              100: '#e0f2f1',
-              500: '#14b8a6',
-              600: '#0d9488',
-              700: '#0f766e'
-            },
-            accent: {
-              500: '#f97316',
-              600: '#ea580c'
-            }
-          },
-          boxShadow: {
-            card: '0 10px 30px rgba(2, 132, 199, 0.08)'
-          }
-        }
-      }
-    };
-  </script>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="./assets/tailwind.generated.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="./assets/main.css">
+  <script>
+    (() => {
+      const baseUrl = new URL("./", window.location.href).href;
+      const ogImageUrl = new URL("./assets/images/og-default.png", window.location.href).href;
+      const canonical = document.querySelector('link[rel="canonical"]');
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      const ogImage = document.querySelector('meta[property="og:image"]');
+      const twitterImage = document.querySelector('meta[name="twitter:image"]');
+
+      if (canonical) canonical.setAttribute("href", baseUrl);
+      if (ogUrl) ogUrl.setAttribute("content", baseUrl);
+      if (ogImage) ogImage.setAttribute("content", ogImageUrl);
+      if (twitterImage) twitterImage.setAttribute("content", ogImageUrl);
+    })();
+  </script>
 </head>
 <body id="top" class="bg-white text-slate-800 pt-20 pb-24 md:pb-0">
   <a href="#main-content" class="skip-link">本文へ移動</a>
@@ -88,16 +66,16 @@
 
       <div class="hidden md:flex items-center gap-4">
         <div class="text-right">
-          <p class="text-xs text-slate-500 mb-0.5"><span data-business-hours>8:00-20:00（年中無休）</span></p>
-          <a data-phone-anchor href="tel:0000000000" class="text-2xl font-extrabold text-accent-600 flex items-center justify-end gap-2 hover:text-accent-500 transition leading-none">
+          <p class="text-xs text-slate-500 mb-0.5"><span data-business-hours>9:00-20:00</span></p>
+          <a data-phone-anchor href="tel:07091317882" class="text-2xl font-extrabold text-accent-600 flex items-center justify-end gap-2 hover:text-accent-500 transition leading-none">
             <i class="fa-solid fa-phone-volume"></i>
-            <span data-phone-display>000-0000-0000</span>
+            <span data-phone-display>070-9131-7882</span>
           </a>
           <a data-email-anchor href="mailto:retoa@regalocom.net" class="text-xs text-slate-500 hover:text-primary-700 transition">
             メール: <span data-contact-email>retoa@regalocom.net</span>
           </a>
         </div>
-        <a data-phone-anchor href="tel:0000000000" class="bg-accent-600 hover:bg-accent-500 text-white px-5 py-2.5 rounded shadow-sm transition font-bold text-sm">
+        <a data-phone-anchor href="tel:07091317882" class="bg-accent-600 hover:bg-accent-500 text-white px-5 py-2.5 rounded shadow-sm transition font-bold text-sm">
           今すぐ電話相談
         </a>
       </div>
@@ -120,10 +98,10 @@
         <a href="#contact"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>お問い合わせ</a>
       </nav>
       <div class="px-4 pb-4">
-        <a data-phone-anchor href="tel:0000000000" class="w-full inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white font-bold py-3 rounded-md transition">
+        <a data-phone-anchor href="tel:07091317882" class="w-full inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white font-bold py-3 rounded-md transition">
           <i class="fa-solid fa-phone-volume mr-2"></i>
           <span class="mr-2">電話で今すぐ相談</span>
-          <span data-phone-display>000-0000-0000</span>
+          <span data-phone-display>070-9131-7882</span>
         </a>
       </div>
     </div>
@@ -154,10 +132,10 @@
             <li class="hero-chip"><i class="fa-solid fa-circle-check text-secondary-600 mr-2"></i>施工後のアフター相談も可</li>
           </ul>
           <div class="hidden md:flex flex-wrap gap-3">
-            <a data-phone-anchor href="tel:0000000000" class="phone-cta inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white text-base font-bold px-6 py-4 rounded-md shadow-md transition">
+            <a data-phone-anchor href="tel:07091317882" class="phone-cta inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white text-base font-bold px-6 py-4 rounded-md shadow-md transition">
               <i class="fa-solid fa-phone-volume mr-2"></i>
               <span class="mr-2">お急ぎは電話</span>
-              <span data-phone-display>000-0000-0000</span>
+              <span data-phone-display>070-9131-7882</span>
             </a>
             <a href="#contact" class="inline-flex items-center justify-center bg-secondary-600 hover:bg-secondary-700 text-white text-base font-bold px-6 py-4 rounded-md shadow-md transition">
               <i class="fa-solid fa-pen-to-square mr-2"></i>フォームで相談する
@@ -215,7 +193,7 @@
           <article class="kpi-card reveal-item" style="--reveal-delay: 160ms;">
             <div class="kpi-icon"><i class="fa-solid fa-clock"></i></div>
             <p class="kpi-label">電話受付</p>
-            <p class="kpi-value"><span data-business-hours>8:00-20:00（年中無休）</span></p>
+            <p class="kpi-value"><span data-business-hours>9:00-20:00</span></p>
           </article>
           <article class="kpi-card reveal-item" style="--reveal-delay: 240ms;">
             <div class="kpi-icon"><i class="fa-solid fa-location-dot"></i></div>
@@ -564,9 +542,9 @@
           <p class="text-primary-100 mt-3 text-sm md:text-base">症状を伺い、必要な対応と概算の流れをその場でご案内します。</p>
         </div>
         <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-          <a data-phone-anchor href="tel:0000000000" class="phone-cta inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white font-bold px-6 py-4 rounded-md shadow-lg transition">
+          <a data-phone-anchor href="tel:07091317882" class="phone-cta inline-flex items-center justify-center bg-accent-600 hover:bg-accent-500 text-white font-bold px-6 py-4 rounded-md shadow-lg transition">
             <i class="fa-solid fa-phone-volume mr-2"></i>
-            <span data-phone-display>000-0000-0000</span>
+            <span data-phone-display>070-9131-7882</span>
           </a>
           <a href="#contact" class="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white font-bold px-6 py-4 rounded-md border border-white/30 transition">
             <i class="fa-solid fa-pen-to-square mr-2"></i>フォームで相談
@@ -582,13 +560,13 @@
           <h2 class="text-2xl md:text-3xl font-heading font-bold text-slate-800 mt-2">無料相談・お問い合わせ</h2>
           <p class="text-sm md:text-base text-slate-600 mt-3">トラブル時は電話が最短です。フォームは詳細相談にご利用ください。</p>
           <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3 max-w-2xl mx-auto">
-            <a data-phone-anchor href="tel:0000000000" class="rounded-lg border border-orange-200 bg-orange-50 px-5 py-4 text-left text-orange-700 hover:bg-orange-100 transition">
+            <a data-phone-anchor href="tel:07091317882" class="rounded-lg border border-orange-200 bg-orange-50 px-5 py-4 text-left text-orange-700 hover:bg-orange-100 transition">
               <div class="text-xs font-bold tracking-wide">最短でつながる電話窓口</div>
               <div class="text-2xl font-extrabold mt-1 leading-none flex items-center gap-2">
                 <i class="fa-solid fa-phone-volume text-lg"></i>
-                <span data-phone-display>000-0000-0000</span>
+                <span data-phone-display>070-9131-7882</span>
               </div>
-              <div class="text-xs mt-2"><span data-business-hours>8:00-20:00（年中無休）</span></div>
+              <div class="text-xs mt-2"><span data-business-hours>9:00-20:00</span></div>
             </a>
             <div class="rounded-lg border border-primary-100 bg-primary-50 px-5 py-4 text-left text-primary-900">
               <div class="text-xs font-bold tracking-wide">メールで連絡する場合</div>
@@ -602,7 +580,7 @@
         <div class="bg-white rounded-xl border border-slate-200 shadow-card p-6 md:p-8 space-y-6">
           <div class="rounded-lg border border-primary-100 bg-primary-50 p-4 text-sm text-primary-900">
             <p class="font-bold">お急ぎの場合は電話相談が最短です。</p>
-            <p class="mt-1">フォーム送信後はメール作成画面が開きます。メールアプリが使えない場合は、上記メールアドレスへ直接ご連絡ください。</p>
+            <p class="mt-1">通常はフォーム送信で受付されます。通信状況によってはメール作成画面へ切り替わるため、その場合は内容確認のうえ送信してください。</p>
           </div>
 
           <form id="contact-form" class="space-y-6">
@@ -698,12 +676,12 @@
               </tr>
               <tr class="border-b border-slate-200">
                 <th class="py-4 px-6 bg-slate-100 font-bold text-slate-700 border-r border-slate-200 text-sm md:text-base">営業時間</th>
-                <td class="py-4 px-6 text-slate-800 text-sm md:text-base"><span data-business-hours>8:00-20:00（年中無休）</span></td>
+                <td class="py-4 px-6 text-slate-800 text-sm md:text-base"><span data-business-hours>9:00-20:00</span></td>
               </tr>
               <tr class="border-b border-slate-200">
                 <th class="py-4 px-6 bg-slate-100 font-bold text-slate-700 border-r border-slate-200 text-sm md:text-base">電話番号</th>
                 <td class="py-4 px-6 text-slate-800 text-sm md:text-base">
-                  <a data-phone-anchor href="tel:0000000000" class="font-bold text-accent-600"><span data-phone-display>000-0000-0000</span></a>
+                  <a data-phone-anchor href="tel:07091317882" class="font-bold text-accent-600"><span data-phone-display>070-9131-7882</span></a>
                 </td>
               </tr>
               <tr>
@@ -731,24 +709,24 @@
         <a href="#contact" class="text-sm hover:text-white transition">お問い合わせ</a>
         <a href="#company" class="text-sm hover:text-white transition">会社概要</a>
       </div>
-      <a data-phone-anchor href="tel:0000000000" class="text-2xl font-extrabold text-white hover:text-orange-100 transition mb-2">
-        <i class="fa-solid fa-phone-volume mr-2"></i><span data-phone-display>000-0000-0000</span>
+      <a data-phone-anchor href="tel:07091317882" class="text-2xl font-extrabold text-white hover:text-orange-100 transition mb-2">
+        <i class="fa-solid fa-phone-volume mr-2"></i><span data-phone-display>070-9131-7882</span>
       </a>
-      <p class="text-xs text-slate-400 mb-4"><span data-business-hours>8:00-20:00（年中無休）</span></p>
+      <p class="text-xs text-slate-400 mb-4"><span data-business-hours>9:00-20:00</span></p>
       <a data-email-anchor href="mailto:retoa@regalocom.net" class="text-sm text-slate-300 hover:text-white mb-6"><span data-contact-email>retoa@regalocom.net</span></a>
       <div class="text-sm text-slate-400">© Letoa All Rights Reserved.</div>
     </div>
   </footer>
 
-  <a data-phone-anchor href="tel:0000000000" class="desktop-call-widget phone-cta hidden lg:flex" aria-label="電話で今すぐ相談する">
+  <a data-phone-anchor href="tel:07091317882" class="desktop-call-widget phone-cta hidden lg:flex" aria-label="電話で今すぐ相談する">
     <span class="desktop-call-widget__label"><i class="fa-solid fa-phone-volume"></i> 電話で今すぐ相談</span>
-    <span class="desktop-call-widget__number" data-phone-display>000-0000-0000</span>
+    <span class="desktop-call-widget__number" data-phone-display>070-9131-7882</span>
   </a>
 
   <div class="fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 p-2.5 z-50 md:hidden flex gap-2 shadow-[0_-5px_10px_rgba(0,0,0,0.05)]">
-    <a data-phone-anchor href="tel:0000000000" class="w-2/3 bg-accent-600 text-white rounded-md py-2.5 flex flex-col items-center justify-center font-bold shadow-sm active:bg-accent-500">
+    <a data-phone-anchor href="tel:07091317882" class="w-2/3 bg-accent-600 text-white rounded-md py-2.5 flex flex-col items-center justify-center font-bold shadow-sm active:bg-accent-500">
       <span class="text-[11px] mb-0.5"><i class="fa-solid fa-phone-volume mr-1"></i>今すぐ電話相談</span>
-      <span class="text-base leading-none tracking-wide" data-phone-display>000-0000-0000</span>
+      <span class="text-base leading-none tracking-wide" data-phone-display>070-9131-7882</span>
     </a>
     <a href="#contact" class="w-1/3 bg-secondary-600 text-white rounded-md py-2.5 flex flex-col items-center justify-center font-bold shadow-sm active:bg-secondary-700">
       <span class="text-[11px] mb-0.5"><i class="fa-solid fa-pen-to-square mr-1"></i>無料相談</span>
@@ -756,7 +734,7 @@
     </a>
   </div>
 
-  <script type="application/ld+json">
+  <script id="ld-json-local-business" type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -765,17 +743,17 @@
     "areaServed": "京都府長岡京市",
     "serviceType": ["給湯器トラブル対応", "ガスコンロトラブル対応", "配管・水漏れトラブル対応"],
     "priceRange": "要見積り",
-    "telephone": "000-0000-0000",
+    "telephone": "070-9131-7882",
     "email": "retoa@regalocom.net",
     "availableLanguage": "ja",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "000-0000-0000",
+      "telephone": "070-9131-7882",
       "contactType": "customer support",
       "areaServed": "京都府長岡京市"
     },
-    "openingHours": "Mo-Su 08:00-20:00",
-    "url": "https://regal753.github.io/letoa-lp-mvp/"
+    "openingHours": "Mo-Su 09:00-20:00",
+    "url": "./"
   }
   </script>
   <script src="./assets/main.js"></script>

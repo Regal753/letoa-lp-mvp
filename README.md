@@ -5,25 +5,40 @@
 ## ファイル構成
 
 - `index.html`: LP本体
+- `assets/tailwind.generated.css`: Tailwindのビルド済みCSS（CDN不使用）
 - `assets/main.css`: 見た目・アニメーション・アクセシビリティ調整
-- `assets/main.js`: メニュー、FAQ、問い合わせフォーム（mailto起動）
+- `assets/main.js`: メニュー、FAQ、問い合わせフォーム（API送信 + mailtoフォールバック）
+- `tailwind.config.js`: Tailwind設定
+- `assets/tailwind.input.css`: Tailwind入力ファイル
 
 ## 実運用値
 
 `assets/main.js` の `LP_CONFIG` に設定しています。
 
 - `contactEmail`: `retoa@regalocom.net`
-- `businessHours`: `8:00-20:00（年中無休）`
+- `businessHours`: `9:00-20:00`
+- `phoneDisplay`: `070-9131-7882`
+- `phoneLink`: `07091317882`
 
 ## 送信仕様
 
-- LPフォームは送信時に `mailto:` を生成し、メール作成画面を起動します
+- LPフォームは `formsubmit.co` のAPIへ直接POSTします
+- API送信に失敗した場合のみ `mailto:` へフォールバックします
 - 直接メール送信したい場合は、画面内のメールリンクを利用します
+
+## CSSビルド
+
+```powershell
+cd C:\Users\Workp\letoa-lp-mvp
+npm install
+npm run build:css
+```
 
 ## ローカル確認
 
 ```powershell
 cd C:\Users\Workp\letoa-lp-mvp
+npm run build:css
 python -m http.server 8080
 ```
 
@@ -37,4 +52,3 @@ python -m http.server 8080
 ## デプロイ更新
 
 `main` に push すると GitHub Pages が自動で更新されます。
-

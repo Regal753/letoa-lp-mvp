@@ -1,8 +1,9 @@
 const LP_CONFIG = {
-  businessHours: "8:00-20:00（年中無休）",
+  businessHours: "9:00-20:00",
   contactEmail: "retoa@regalocom.net",
-  phoneDisplay: "000-0000-0000",
-  phoneLink: "0000000000",
+  phoneDisplay: "070-9131-7882",
+  phoneLink: "07091317882",
+  formEndpoint: "https://formsubmit.co/ajax/retoa@regalocom.net",
   companyName: "レトア",
   source: "letoa-lp-mvp",
 };
@@ -16,7 +17,7 @@ const sanitize = (value) => value.trim().replace(/\s+/g, " ");
 const normalizePhoneHrefValue = (rawPhone) => {
   let normalized = String(rawPhone || "").trim().replace(/[^\d+]/g, "");
   if (!normalized) {
-    return "0000000000";
+    return "07091317882";
   }
 
   if (normalized.startsWith("+")) {
@@ -180,6 +181,23 @@ const initPhoneLinkBehavior = () => {
   });
 };
 
+const syncStructuredData = () => {
+  const ldJson = document.getElementById("ld-json-local-business");
+  if (!ldJson) return;
+
+  try {
+    const data = JSON.parse(ldJson.textContent || "{}");
+    data.url = new URL("./", window.location.href).href;
+    data.telephone = LP_CONFIG.phoneDisplay;
+    if (data.contactPoint && typeof data.contactPoint === "object") {
+      data.contactPoint.telephone = LP_CONFIG.phoneDisplay;
+    }
+    ldJson.textContent = JSON.stringify(data);
+  } catch (error) {
+    // no-op
+  }
+};
+
 const setStatus = (message, statusType) => {
   const statusEl = document.getElementById("contact-status");
   if (!statusEl) return;
@@ -213,6 +231,43 @@ const buildMailtoLink = (fields) => {
   const encodedSubject = encodeURIComponent(subject);
   const encodedBody = encodeURIComponent(bodyLines.join("\n"));
   return `mailto:${LP_CONFIG.contactEmail}?subject=${encodedSubject}&body=${encodedBody}`;
+};
+
+const buildApiPayload = (fields) => ({
+  _subject: `[${LP_CONFIG.companyName}] ${fields.category}のお問い合わせ`,
+  _template: "table",
+  _captcha: "false",
+  source: LP_CONFIG.source,
+  pageUrl: window.location.href,
+  name: fields.name,
+  phone: fields.phone,
+  email: fields.email,
+  category: fields.category,
+  preferredContact: fields.preferredContact,
+  isUrgent: fields.isUrgent,
+  message: fields.message,
+});
+
+const submitFormViaApi = async (fields) => {
+  const response = await fetch(LP_CONFIG.formEndpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(buildApiPayload(fields)),
+  });
+
+  if (!response.ok) {
+    throw new Error(`api_status_${response.status}`);
+  }
+
+  const json = await response.json().catch(() => null);
+  if (!json || json.success !== "true") {
+    throw new Error("api_invalid_response");
+  }
+
+  return json;
 };
 
 const collectFormFields = (form) => {
@@ -263,7 +318,7 @@ const initContactForm = () => {
 
   const defaultButtonHtml = submitBtn.innerHTML;
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     setStatus("", "");
 
@@ -293,16 +348,26 @@ const initContactForm = () => {
     submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>送信準備中...';
 
     try {
+      await submitFormViaApi(fields);
+      setStatus("送信を受け付けました。担当より折り返しご連絡します。", "success");
+      form.reset();
+      const messageCounter = document.getElementById("message-count");
+      if (messageCounter) {
+        messageCounter.textContent = "0";
+      }
+    } catch (apiError) {
       const mailtoLink = buildMailtoLink(fields);
       if (mailtoLink.length > MAX_MAILTO_URL_LENGTH) {
-        setStatus("ご相談内容が長いため送信できません。内容を短くして再度お試しください。", "error");
+        setStatus("送信に失敗しました。ご相談内容を短くするか、お電話でご連絡ください。", "error");
         return;
       }
 
-      window.location.assign(mailtoLink);
-      setStatus("メール作成画面を開きました。内容確認のうえ送信してください。", "success");
-    } catch (errorCaught) {
-      setStatus("メール画面を起動できませんでした。メールアドレスへ直接ご連絡ください。", "error");
+      try {
+        window.location.assign(mailtoLink);
+        setStatus("フォーム送信に失敗したため、メール作成画面を開きました。内容確認のうえ送信してください。", "error");
+      } catch (mailtoError) {
+        setStatus("送信に失敗しました。お手数ですが電話かメールで直接ご連絡ください。", "error");
+      }
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = defaultButtonHtml;
@@ -314,6 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateContactInfo();
   initMobileMenu();
   initPhoneLinkBehavior();
+  syncStructuredData();
   initRevealEffects();
   initFaq();
   initMessageCounter();
