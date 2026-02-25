@@ -1,5 +1,5 @@
 const LP_CONFIG = {
-  businessHours: "9:00-20:00",
+  businessHours: "9:00〜20:00",
   contactEmail: "retoa@regalocom.net",
   phoneDisplay: "070-9131-7882",
   phoneLink: "07091317882",
@@ -11,8 +11,12 @@ const LP_CONFIG = {
 const PHONE_REGEX = /^[0-9+\-()\s]{9,15}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_MAILTO_URL_LENGTH = 1800;
+const MAX_MAILTO_MESSAGE_LENGTH = 180;
+const API_TIMEOUT_MS = 12000;
 
 const sanitize = (value) => value.trim().replace(/\s+/g, " ");
+const truncateText = (value, maxLength) =>
+  value.length <= maxLength ? value : `${value.slice(0, maxLength)}...`;
 
 const normalizePhoneHrefValue = (rawPhone) => {
   let normalized = String(rawPhone || "").trim().replace(/[^\d+]/g, "");
@@ -29,6 +33,16 @@ const normalizePhoneHrefValue = (rawPhone) => {
   return normalized;
 };
 
+const normalizePhoneDisplayValue = (rawPhone) =>
+  String(rawPhone || "")
+    .trim()
+    .replace(/-/g, "\u2011");
+
+const normalizePhoneSchemaValue = (rawPhone) =>
+  String(rawPhone || "")
+    .trim()
+    .replace(/\u2011/g, "-");
+
 const updateContactInfo = () => {
   const emailAnchors = document.querySelectorAll("[data-email-anchor]");
   const emailDisplays = document.querySelectorAll("[data-contact-email]");
@@ -37,6 +51,7 @@ const updateContactInfo = () => {
   const phoneDisplays = document.querySelectorAll("[data-phone-display]");
 
   const phoneHrefValue = normalizePhoneHrefValue(LP_CONFIG.phoneLink || LP_CONFIG.phoneDisplay);
+  const phoneDisplayValue = normalizePhoneDisplayValue(LP_CONFIG.phoneDisplay);
   const phoneHref = `tel:${phoneHrefValue}`;
 
   emailAnchors.forEach((anchor) => {
@@ -56,7 +71,7 @@ const updateContactInfo = () => {
   });
 
   phoneDisplays.forEach((node) => {
-    node.textContent = LP_CONFIG.phoneDisplay;
+    node.textContent = phoneDisplayValue;
   });
 };
 
@@ -180,14 +195,14 @@ const initPhoneLinkBehavior = () => {
 
   phoneAnchors.forEach((anchor) => {
     if (!anchor.getAttribute("aria-label")) {
-      anchor.setAttribute("aria-label", `電話で相談する ${LP_CONFIG.phoneDisplay}`);
+      anchor.setAttribute("aria-label", `電話で相談する ${normalizePhoneDisplayValue(LP_CONFIG.phoneDisplay)}`);
     }
 
     anchor.addEventListener("click", () => {
       if (!Array.isArray(window.dataLayer)) return;
       window.dataLayer.push({
         event: "lp_phone_click",
-        phone: LP_CONFIG.phoneDisplay,
+        phone: normalizePhoneSchemaValue(LP_CONFIG.phoneDisplay),
         source: LP_CONFIG.source,
       });
     });
@@ -200,15 +215,21 @@ const syncStructuredData = () => {
 
   try {
     const data = JSON.parse(ldJson.textContent || "{}");
+    const schemaPhone = normalizePhoneSchemaValue(LP_CONFIG.phoneDisplay);
     data.url = new URL("./", window.location.href).href;
-    data.telephone = LP_CONFIG.phoneDisplay;
+    data.telephone = schemaPhone;
     if (data.contactPoint && typeof data.contactPoint === "object") {
-      data.contactPoint.telephone = LP_CONFIG.phoneDisplay;
+      data.contactPoint.telephone = schemaPhone;
     }
     ldJson.textContent = JSON.stringify(data);
   } catch (error) {
     // no-op
   }
+};
+
+const pushDataLayerEvent = (payload) => {
+  if (!Array.isArray(window.dataLayer)) return;
+  window.dataLayer.push(payload);
 };
 
 const setStatus = (message, statusType) => {
@@ -224,6 +245,8 @@ const setStatus = (message, statusType) => {
 
 const buildMailtoLink = (fields) => {
   const subject = `[${LP_CONFIG.companyName}] ${fields.category}のお問い合わせ`;
+  const shortMessage = truncateText(fields.message, MAX_MAILTO_MESSAGE_LENGTH);
+  const isMessageShortened = shortMessage.length < fields.message.length;
   const bodyLines = [
     "以下の内容でお問い合わせがありました。",
     "",
@@ -235,7 +258,10 @@ const buildMailtoLink = (fields) => {
     `緊急対応希望: ${fields.isUrgent}`,
     "",
     "ご相談内容:",
-    fields.message,
+    shortMessage,
+    ...(isMessageShortened
+      ? ["", "※本文が長いため、メール本文では一部のみ送信しています。"]
+      : []),
     "",
     `送信元: ${LP_CONFIG.source}`,
     `ページURL: ${window.location.href}`,
@@ -262,26 +288,33 @@ const buildApiPayload = (fields) => ({
 });
 
 const submitFormViaApi = async (fields) => {
-  const response = await fetch(LP_CONFIG.formEndpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(buildApiPayload(fields)),
-  });
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), API_TIMEOUT_MS);
+  try {
+    const response = await fetch(LP_CONFIG.formEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      signal: controller.signal,
+      body: JSON.stringify(buildApiPayload(fields)),
+    });
 
-  if (!response.ok) {
-    throw new Error(`api_status_${response.status}`);
+    if (!response.ok) {
+      throw new Error(`api_status_${response.status}`);
+    }
+
+    const json = await response.json().catch(() => null);
+    const isSuccess = json && (json.success === true || json.success === "true");
+    if (!isSuccess) {
+      throw new Error("api_invalid_response");
+    }
+
+    return json;
+  } finally {
+    window.clearTimeout(timeoutId);
   }
-
-  const json = await response.json().catch(() => null);
-  const isSuccess = json && (json.success === true || json.success === "true");
-  if (!isSuccess) {
-    throw new Error("api_invalid_response");
-  }
-
-  return json;
 };
 
 const collectFormFields = (form) => {
@@ -363,6 +396,11 @@ const initContactForm = () => {
 
     try {
       await submitFormViaApi(fields);
+      pushDataLayerEvent({
+        event: "lp_form_submit_success",
+        source: LP_CONFIG.source,
+        category: fields.category,
+      });
       setStatus("送信を受け付けました。担当より折り返しご連絡します。", "success");
       form.reset();
       const messageCounter = document.getElementById("message-count");
@@ -370,16 +408,38 @@ const initContactForm = () => {
         messageCounter.textContent = "0";
       }
     } catch (apiError) {
+      const isTimeout =
+        apiError instanceof Error &&
+        (apiError.name === "AbortError" || apiError.message.includes("timeout"));
       const mailtoLink = buildMailtoLink(fields);
       if (mailtoLink.length > MAX_MAILTO_URL_LENGTH) {
+        pushDataLayerEvent({
+          event: "lp_form_submit_failed",
+          source: LP_CONFIG.source,
+          reason: "mailto_too_long",
+        });
         setStatus("送信に失敗しました。ご相談内容を短くするか、お電話でご連絡ください。", "error");
         return;
       }
 
       try {
         window.location.assign(mailtoLink);
-        setStatus("フォーム送信に失敗したため、メール作成画面を開きました。内容確認のうえ送信してください。", "error");
+        pushDataLayerEvent({
+          event: "lp_form_submit_fallback_mailto",
+          source: LP_CONFIG.source,
+          reason: isTimeout ? "timeout" : "api_failed",
+        });
+        if (isTimeout) {
+          setStatus("通信が不安定なため、メール作成画面を開きました。内容確認のうえ送信してください。", "error");
+        } else {
+          setStatus("フォーム送信に失敗したため、メール作成画面を開きました。内容確認のうえ送信してください。", "error");
+        }
       } catch (mailtoError) {
+        pushDataLayerEvent({
+          event: "lp_form_submit_failed",
+          source: LP_CONFIG.source,
+          reason: "mailto_open_failed",
+        });
         setStatus("送信に失敗しました。お手数ですが電話かメールで直接ご連絡ください。", "error");
       }
     } finally {
