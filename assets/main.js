@@ -1,4 +1,5 @@
 const LP_CONFIG = {
+  siteUrl: "https://regal753.github.io/letoa-lp-mvp/",
   businessHours: "9:00〜20:00",
   contactEmail: "retoa@regalocom.net",
   phoneDisplay: "070-9131-7882",
@@ -13,10 +14,16 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_MAILTO_URL_LENGTH = 1800;
 const MAX_MAILTO_MESSAGE_LENGTH = 180;
 const API_TIMEOUT_MS = 12000;
+const MIN_FORM_FILL_MS = 3500;
+const FORM_SUBMIT_COOLDOWN_MS = 45000;
+const LAST_SUBMIT_AT_KEY = "letoa_lp_last_submit_at";
 
-const sanitize = (value) => value.trim().replace(/\s+/g, " ");
+const normalizeInput = (value) => String(value || "").normalize("NFKC");
+const sanitize = (value) => normalizeInput(value).trim().replace(/\s+/g, " ");
 const truncateText = (value, maxLength) =>
   value.length <= maxLength ? value : `${value.slice(0, maxLength)}...`;
+const normalizePhoneField = (value) => sanitize(value).replace(/[ー−―‐]/g, "-");
+const normalizeEmailField = (value) => sanitize(value).toLowerCase();
 
 const normalizePhoneHrefValue = (rawPhone) => {
   let normalized = String(rawPhone || "").trim().replace(/[^\d+]/g, "");
@@ -216,7 +223,7 @@ const syncStructuredData = () => {
   try {
     const data = JSON.parse(ldJson.textContent || "{}");
     const schemaPhone = normalizePhoneSchemaValue(LP_CONFIG.phoneDisplay);
-    data.url = new URL("./", window.location.href).href;
+    data.url = LP_CONFIG.siteUrl;
     data.telephone = schemaPhone;
     if (data.contactPoint && typeof data.contactPoint === "object") {
       data.contactPoint.telephone = schemaPhone;
@@ -275,7 +282,7 @@ const buildMailtoLink = (fields) => {
 const buildApiPayload = (fields) => ({
   _subject: `[${LP_CONFIG.companyName}] ${fields.category}のお問い合わせ`,
   _template: "table",
-  _captcha: "false",
+  _captcha: "true",
   source: LP_CONFIG.source,
   pageUrl: window.location.href,
   name: fields.name,
@@ -322,13 +329,29 @@ const collectFormFields = (form) => {
 
   return {
     name: sanitize(String(formData.get("name") || "")),
-    phone: sanitize(String(formData.get("phone") || "")),
-    email: sanitize(String(formData.get("email") || "")),
+    phone: normalizePhoneField(String(formData.get("phone") || "")),
+    email: normalizeEmailField(String(formData.get("email") || "")),
     category: sanitize(String(formData.get("category") || "その他")),
     preferredContact: sanitize(String(formData.get("preferredContact") || "指定なし")),
     isUrgent: formData.get("isUrgent") ? "希望する" : "通常",
-    message: String(formData.get("message") || "").trim(),
+    message: normalizeInput(String(formData.get("message") || "")).trim(),
   };
+};
+
+const getLastSubmitAt = () => {
+  try {
+    return Number(window.localStorage.getItem(LAST_SUBMIT_AT_KEY) || "0");
+  } catch (error) {
+    return 0;
+  }
+};
+
+const setLastSubmitAt = (timestamp) => {
+  try {
+    window.localStorage.setItem(LAST_SUBMIT_AT_KEY, String(timestamp));
+  } catch (error) {
+    // no-op
+  }
 };
 
 const validateFormFields = (fields, consentChecked) => {
@@ -360,14 +383,37 @@ const initContactForm = () => {
   const submitBtn = document.getElementById("submit-btn");
   const honeypot = document.getElementById("contact_company");
   const consent = document.getElementById("consent");
+  const phoneInput = document.getElementById("phone");
+  const emailInput = document.getElementById("email");
+  const formLoadedAt = Date.now();
 
   if (!form || !submitBtn || !honeypot || !consent) return;
 
   const defaultButtonHtml = submitBtn.innerHTML;
 
+  phoneInput?.addEventListener("blur", () => {
+    phoneInput.value = normalizePhoneField(phoneInput.value);
+  });
+
+  emailInput?.addEventListener("blur", () => {
+    emailInput.value = normalizeEmailField(emailInput.value);
+  });
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     setStatus("", "");
+
+    const now = Date.now();
+    if (now - formLoadedAt < MIN_FORM_FILL_MS) {
+      setStatus("送信操作が早すぎます。入力内容をご確認のうえ再送してください。", "error");
+      return;
+    }
+
+    const lastSubmitAt = getLastSubmitAt();
+    if (lastSubmitAt && now - lastSubmitAt < FORM_SUBMIT_COOLDOWN_MS) {
+      setStatus("連続送信を防ぐため、少し時間をおいて再送してください。", "error");
+      return;
+    }
 
     if (!form.reportValidity()) {
       setStatus("未入力または形式エラーがあります。", "error");
@@ -401,6 +447,7 @@ const initContactForm = () => {
         source: LP_CONFIG.source,
         category: fields.category,
       });
+      setLastSubmitAt(Date.now());
       setStatus("送信を受け付けました。担当より折り返しご連絡します。", "success");
       form.reset();
       const messageCounter = document.getElementById("message-count");

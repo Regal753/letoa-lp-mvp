@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Noto Sans JP"', "sans-serif"],
-        heading: ['"Zen Kaku Gothic New"', '"Noto Sans JP"', "sans-serif"],
+        sans: ['"Hiragino Sans"', '"Yu Gothic UI"', '"Yu Gothic"', '"Meiryo"', "sans-serif"],
+        heading: ['"Hiragino Kaku Gothic ProN"', '"Yu Gothic UI"', '"Yu Gothic"', '"Meiryo"', "sans-serif"],
       },
       colors: {
         primary: {

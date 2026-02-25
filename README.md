@@ -16,13 +16,15 @@
 `assets/main.js` の `LP_CONFIG` に設定しています。
 
 - `contactEmail`: `retoa@regalocom.net`
-- `businessHours`: `9:00-20:00`
+- `businessHours`: `9:00〜20:00`
 - `phoneDisplay`: `070-9131-7882`
 - `phoneLink`: `07091317882`
 
 ## 送信仕様
 
 - LPフォームは `formsubmit.co` のAPIへ直接POSTします
+- API側の `captcha` を有効化しています
+- フロント側で honeypot / 早すぎる送信 / 連続送信の抑止を行います
 - API送信に失敗した場合のみ `mailto:` へフォールバックします
 - 直接メール送信したい場合は、画面内のメールリンクを利用します
 
