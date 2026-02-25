@@ -753,6 +753,16 @@ details > summary::-webkit-details-marker {
   transform: translateY(0);
 }
 
+.no-js .reveal-item {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.no-js .animate-fade-up {
+  animation: none;
+}
+
 .reveal-delay-0 {
   --reveal-delay: 0ms;
 }

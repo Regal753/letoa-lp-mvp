@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="ja" class="no-js scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +12,30 @@
   <meta property="og:locale" content="ja_JP">
   <meta property="og:url" content="https://regal753.github.io/letoa-lp-mvp/">
   <meta property="og:image" content="https://regal753.github.io/letoa-lp-mvp/assets/images/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="長岡京市の設備トラブル解決 レトア">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="長岡京市の設備トラブル解決 | レトア">
   <meta name="twitter:description" content="給湯器・ガスコンロ・配管トラブルを地元密着で対応。見積り無料・追加請求なし。">
   <meta name="twitter:image" content="https://regal753.github.io/letoa-lp-mvp/assets/images/og-default.png">
   <link rel="canonical" href="https://regal753.github.io/letoa-lp-mvp/">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+  <script>
+    document.documentElement.classList.remove("no-js");
+    document.documentElement.classList.add("js");
+  </script>
+  <noscript>
+    <style>
+      .reveal-item {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .animate-fade-up {
+        animation: none !important;
+      }
+    </style>
+  </noscript>
 
   <link rel="stylesheet" href="./assets/tailwind.generated.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -33,15 +51,15 @@
         <span class="text-xl md:text-2xl font-heading font-bold text-primary-800 tracking-tight">レトア</span>
       </a>
 
-      <nav class="hidden xl:flex items-center gap-6 text-sm font-medium text-slate-700" aria-label="主要メニュー">
+      <nav class="hidden md:flex items-center gap-4 lg:gap-5 text-xs lg:text-sm font-medium text-slate-700" aria-label="主要メニュー">
         <a href="#about" class="hover:text-primary-600 transition">レトアについて</a>
-        <a href="#proof" class="hover:text-primary-600 transition">対応事例</a>
-        <a href="#voices" class="hover:text-primary-600 transition">お客様の声</a>
+        <a href="#proof" class="hidden lg:inline-flex hover:text-primary-600 transition">安心材料</a>
+        <a href="#voices" class="hidden xl:inline-flex hover:text-primary-600 transition">お客様の声</a>
         <a href="#reasons" class="hover:text-primary-600 transition">選ばれる理由</a>
         <a href="#services" class="hover:text-primary-600 transition">対応サービス</a>
-        <a href="#pricing" class="hover:text-primary-600 transition">料金目安</a>
-        <a href="#flow" class="hover:text-primary-600 transition">ご依頼の流れ</a>
-        <a href="#faq" class="hover:text-primary-600 transition">FAQ</a>
+        <a href="#pricing" class="hidden lg:inline-flex hover:text-primary-600 transition">料金目安</a>
+        <a href="#flow" class="hidden xl:inline-flex hover:text-primary-600 transition">ご依頼の流れ</a>
+        <a href="#faq" class="hidden xl:inline-flex hover:text-primary-600 transition">FAQ</a>
         <a href="#contact" class="hover:text-primary-600 transition">お問い合わせ</a>
       </nav>
 
@@ -61,7 +79,7 @@
         </a>
       </div>
 
-      <button id="mobile-menu-btn" type="button" class="xl:hidden text-2xl text-slate-700 p-2" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
+      <button id="mobile-menu-btn" type="button" class="md:hidden text-2xl text-slate-700 p-2" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
@@ -79,10 +97,10 @@
       </div>
     </div>
 
-    <div id="mobile-menu" class="hidden xl:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0">
       <nav class="flex flex-col text-base font-medium text-slate-700 p-4 space-y-4" aria-label="モバイルメニュー">
         <a href="#about" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>レトアについて</a>
-        <a href="#proof" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>対応事例</a>
+        <a href="#proof" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>安心材料</a>
         <a href="#voices" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>お客様の声</a>
         <a href="#reasons" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>選ばれる理由</a>
         <a href="#services" class="block border-b border-slate-50 pb-2"><i class="fa-solid fa-chevron-right text-xs text-primary-500 mr-2"></i>対応サービス</a>
@@ -400,7 +418,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
           <article class="voice-card reveal-item reveal-delay-0">
-            <div class="voice-stars" aria-hidden="true">
+            <div class="voice-stars" role="img" aria-label="5つ星評価">
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
             </div>
             <p class="voice-text">「電話したその日に状況を見てもらえて助かりました。作業前に費用を説明してくれたので安心できました。」</p>
@@ -408,7 +426,7 @@
           </article>
 
           <article class="voice-card reveal-item reveal-delay-80">
-            <div class="voice-stars" aria-hidden="true">
+            <div class="voice-stars" role="img" aria-label="5つ星評価">
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
             </div>
             <p class="voice-text">「他社で不安だった追加料金がなく、説明が明確でした。次回トラブル時もお願いしたいです。」</p>
@@ -416,7 +434,7 @@
           </article>
 
           <article class="voice-card reveal-item reveal-delay-160">
-            <div class="voice-stars" aria-hidden="true">
+            <div class="voice-stars" role="img" aria-label="5つ星評価">
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
             </div>
             <p class="voice-text">「点火不良の原因を丁寧に教えてくれて納得できました。対応が早く、家族も安心していました。」</p>
@@ -739,13 +757,14 @@
             <div class="rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
               <p>送信内容はお問い合わせ対応の目的でのみ利用します。</p>
               <label class="mt-3 inline-flex items-start gap-2 cursor-pointer">
-                <input id="consent" type="checkbox" required class="mt-1 accent-primary-700">
-                <span>個人情報の取扱いに同意して送信する <span class="text-accent-600">必須</span></span>
+                <input id="consent" name="consent" value="agreed" type="checkbox" required class="mt-1 accent-primary-700">
+                <span><a href="#privacy" class="font-bold text-primary-700 underline underline-offset-2">プライバシーポリシー</a>に同意して送信する <span class="text-accent-600">必須</span></span>
               </label>
             </div>
 
             <input name="company" id="contact_company" type="text" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
             <input type="hidden" name="source" value="letoa-lp-mvp">
+            <input type="hidden" name="privacyPolicyVersion" value="2026-02-25">
 
             <button id="submit-btn" type="submit" class="w-full md:w-auto inline-flex items-center justify-center bg-secondary-600 hover:bg-secondary-700 text-white font-bold text-base px-8 py-3 rounded-md transition disabled:opacity-60 disabled:cursor-not-allowed">
               <i class="fa-solid fa-paper-plane mr-2"></i>この内容で送信する
@@ -796,6 +815,26 @@
         </div>
       </div>
     </section>
+
+    <section id="privacy" class="py-16 md:py-20 bg-slate-50 border-t border-slate-200 scroll-mt-20">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <span class="text-primary-600 font-bold tracking-widest text-sm uppercase">Privacy</span>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-slate-800 mt-2">プライバシーポリシー</h2>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-xl p-6 md:p-8 space-y-4 text-sm text-slate-700 leading-relaxed">
+          <p>レトア（以下「当方」）は、お問い合わせ時に取得する個人情報を以下の目的で利用します。</p>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>お問い合わせ内容への回答およびご連絡</li>
+            <li>訪問日程・作業内容・見積りのご案内</li>
+            <li>施工後のアフターサポート対応</li>
+          </ul>
+          <p>取得した個人情報は法令に基づく場合を除き、本人の同意なく第三者へ提供しません。</p>
+          <p>個人情報の開示・訂正・削除のご相談は、<a data-email-anchor href="mailto:retoa@regalocom.net" class="font-bold text-primary-700 underline underline-offset-2"><span data-contact-email>retoa@regalocom.net</span></a> までご連絡ください。</p>
+          <p class="text-xs text-slate-500">制定日: 2026年2月25日</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="bg-slate-800 text-slate-300 py-10 border-t-4 border-primary-600">
@@ -803,19 +842,20 @@
       <h2 class="text-2xl font-heading font-bold text-white mb-6 tracking-wider">レトア</h2>
       <div class="flex flex-wrap justify-center gap-4 mb-8">
         <a href="#about" class="text-sm hover:text-white transition">レトアについて</a>
-        <a href="#proof" class="text-sm hover:text-white transition">対応事例</a>
+        <a href="#proof" class="text-sm hover:text-white transition">安心材料</a>
         <a href="#voices" class="text-sm hover:text-white transition">お客様の声</a>
         <a href="#services" class="text-sm hover:text-white transition">サービス</a>
         <a href="#pricing" class="text-sm hover:text-white transition">料金目安</a>
         <a href="#contact" class="text-sm hover:text-white transition">お問い合わせ</a>
         <a href="#company" class="text-sm hover:text-white transition">会社概要</a>
+        <a href="#privacy" class="text-sm hover:text-white transition">プライバシー</a>
       </div>
       <a data-phone-anchor href="tel:07091317882" class="text-2xl font-extrabold text-white hover:text-orange-100 transition mb-2">
         <i class="fa-solid fa-phone-volume mr-2"></i><span data-phone-display>070&#8209;9131&#8209;7882</span>
       </a>
       <p class="text-xs text-slate-400 mb-4"><span data-business-hours>9:00〜20:00</span></p>
       <a data-email-anchor href="mailto:retoa@regalocom.net" class="text-sm text-slate-300 hover:text-white mb-6"><span data-contact-email>retoa@regalocom.net</span></a>
-      <div class="text-sm text-slate-400">© Letoa All Rights Reserved.</div>
+      <div class="text-sm text-slate-400">© 2026 Letoa All Rights Reserved.</div>
     </div>
   </footer>
 
@@ -844,9 +884,21 @@
     "areaServed": "京都府長岡京市",
     "serviceType": ["給湯器トラブル対応", "ガスコンロトラブル対応", "配管・水漏れトラブル対応"],
     "priceRange": "要見積り",
+    "image": "https://regal753.github.io/letoa-lp-mvp/assets/images/og-default.png",
     "telephone": "070-9131-7882",
     "email": "retoa@regalocom.net",
     "availableLanguage": "ja",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "JP",
+      "addressRegion": "京都府",
+      "addressLocality": "長岡京市"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 34.9265,
+      "longitude": 135.6954
+    },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "070-9131-7882",

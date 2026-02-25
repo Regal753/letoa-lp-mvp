@@ -9,7 +9,7 @@ const LP_CONFIG = {
   source: "letoa-lp-mvp",
 };
 
-const PHONE_REGEX = /^[0-9+\-()\s]{9,15}$/;
+const PHONE_ALLOWED_REGEX = /^[0-9+\-()\s]{9,18}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_MAILTO_URL_LENGTH = 1800;
 const MAX_MAILTO_MESSAGE_LENGTH = 180;
@@ -265,6 +265,8 @@ const buildMailtoLink = (fields) => {
     `お問い合わせ種別: ${fields.category}`,
     `ご連絡希望時間帯: ${fields.preferredContact}`,
     `緊急対応希望: ${fields.isUrgent}`,
+    `個人情報同意: ${fields.consent}`,
+    `同意版: ${fields.privacyPolicyVersion || "未設定"}`,
     "",
     "ご相談内容:",
     shortMessage,
@@ -293,6 +295,9 @@ const buildApiPayload = (fields) => ({
   category: fields.category,
   preferredContact: fields.preferredContact,
   isUrgent: fields.isUrgent,
+  consent: fields.consent,
+  privacyPolicyVersion: fields.privacyPolicyVersion,
+  privacyPolicyUrl: `${LP_CONFIG.siteUrl}#privacy`,
   message: fields.message,
 });
 
@@ -336,6 +341,8 @@ const collectFormFields = (form) => {
     category: sanitize(String(formData.get("category") || "その他")),
     preferredContact: sanitize(String(formData.get("preferredContact") || "指定なし")),
     isUrgent: formData.get("isUrgent") ? "希望する" : "通常",
+    consent: formData.get("consent") ? "同意済み" : "未同意",
+    privacyPolicyVersion: sanitize(String(formData.get("privacyPolicyVersion") || "")),
     message: normalizeInput(String(formData.get("message") || "")).trim(),
   };
 };
@@ -365,7 +372,12 @@ const validateFormFields = (fields, consentChecked) => {
     return "メールアドレスの形式が正しくありません。";
   }
 
-  if (!PHONE_REGEX.test(fields.phone)) {
+  if (!PHONE_ALLOWED_REGEX.test(fields.phone)) {
+    return "電話番号の形式が正しくありません。";
+  }
+
+  const phoneDigits = fields.phone.replace(/\D/g, "");
+  if (phoneDigits.length < 9 || phoneDigits.length > 15) {
     return "電話番号の形式が正しくありません。";
   }
 
