@@ -92,6 +92,7 @@ const initMobileMenu = () => {
   const closeMenu = () => {
     mobileMenu.classList.add("hidden");
     menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", "メニューを開く");
     icon?.classList.remove("fa-xmark");
     icon?.classList.add("fa-bars");
   };
@@ -99,6 +100,7 @@ const initMobileMenu = () => {
   const openMenu = () => {
     mobileMenu.classList.remove("hidden");
     menuBtn.setAttribute("aria-expanded", "true");
+    menuBtn.setAttribute("aria-label", "メニューを閉じる");
     icon?.classList.remove("fa-bars");
     icon?.classList.add("fa-xmark");
   };
@@ -477,9 +479,9 @@ const initContactForm = () => {
           reason: isTimeout ? "timeout" : "api_failed",
         });
         if (isTimeout) {
-          setStatus("通信が不安定なため、メール作成画面を開きました。内容確認のうえ送信してください。", "error");
+          setStatus("通信が不安定なためフォーム送信に失敗しました。メールアプリが起動した場合は内容確認のうえ送信してください。", "error");
         } else {
-          setStatus("フォーム送信に失敗したため、メール作成画面を開きました。内容確認のうえ送信してください。", "error");
+          setStatus("フォーム送信に失敗しました。メールアプリが起動した場合は内容確認のうえ送信してください。", "error");
         }
       } catch (mailtoError) {
         pushDataLayerEvent({
