@@ -34,7 +34,7 @@
 
 ```powershell
 cd C:\Users\Workp\letoa-lp-mvp
-npm install
+npm ci
 npm run build:css
 ```
 

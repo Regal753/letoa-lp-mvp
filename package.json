@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/Regal753/letoa-lp-mvp/issues"
   },
-  "homepage": "https://github.com/Regal753/letoa-lp-mvp#readme",
+  "homepage": "https://regal753.github.io/letoa-lp-mvp/",
   "devDependencies": {
     "tailwindcss": "^3.4.17"
   }
