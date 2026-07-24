@@ -20,6 +20,6 @@
   },
   "homepage": "https://regal753.github.io/letoa-lp-mvp/",
   "devDependencies": {
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.19"
   }
 }
